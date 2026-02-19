@@ -1,0 +1,174 @@
+{
+  "$schema": "https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json",
+  "backend": {
+    "name": "github",
+    "repo": "user/repo"
+  },
+  "media_folder": "public/uploads",
+  "public_folder": "uploads",
+  "media_libraries": { "stock_assets": { "providers": ["pexels"] } },
+  "slug": {
+    "encoding": "unicode",
+    "clean_accents": true,
+    "sanitize_replacement": "-"
+  },
+  "collections": [
+    {
+      "name": "categories",
+      "label": "Categories",
+      "label_singular": "Category",
+      "icon": "category",
+      "folder": "/src/content/categories",
+      "editor": { "preview": false },
+      "format": "json",
+      "fields": [
+        { "name": "title", "label": "Title", "required": true },
+        {
+          "name": "description",
+          "widget": "text",
+          "label": "Description",
+          "required": false
+        },
+        {
+          "name": "image",
+          "label": "Image",
+          "widget": "image",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "posts",
+      "folder": "/src/content/blog",
+      "label": "Posts",
+      "label_singular": "Post",
+      "icon": "sticky_note",
+      "format": "frontmatter",
+      "extension": "md",
+      "editor": { "preview": false },
+      "fields": [
+        { "name": "title", "widget": "text", "required": true },
+        {
+          "name": "description",
+          "widget": "text",
+          "required": true,
+          "maxlength": 160
+        },
+        {
+          "name": "date",
+          "widget": "datetime",
+          "required": true,
+          "time_format": false,
+          "default": "{{now}}"
+        },
+        { "name": "image", "widget": "image", "required": true },
+        { "name": "published", "widget": "boolean", "default": false },
+        { "name": "featured", "widget": "boolean", "default": false },
+        { "name": "youtubeId", "widget": "text", "required": false },
+        {
+          "name": "reading_time",
+          "widget": "number",
+          "min": 1,
+          "after_input": "minutes",
+          "required": false
+        },
+        {
+          "name": "categories",
+          "label": "Categories",
+          "widget": "relation",
+          "multiple": true,
+          "min": 1,
+          "required": true,
+          "collection": "categories",
+          "search_fields": ["title"],
+          "display_fields": ["title"],
+          "value_field": "{{slug}}"
+        },
+        { "name": "body", "widget": "markdown", "required": true }
+      ]
+    },
+    {
+      "name": "products",
+      "label": "Products",
+      "label_singular": "Product",
+      "icon": "package_2",
+      "folder": "/src/content/products",
+      "format": "json",
+      "editor": { "preview": false },
+      "fields": [
+        { "name": "title", "label": "Title", "required": true },
+        {
+          "name": "description",
+          "widget": "markdown",
+          "label": "Description",
+          "required": true
+        },
+        {
+          "name": "type",
+          "label": "Type",
+          "widget": "select",
+          "options": [
+            { "label": "Product", "value": "product" },
+            { "label": "Package", "value": "package" },
+            { "label": "Project", "value": "project" },
+            { "label": "Open Source", "value": "open-source" }
+          ],
+          "required": true,
+          "default": "product"
+        },
+        {
+          "name": "thumbnail",
+          "label": "Thumbnail",
+          "widget": "image",
+          "required": false
+        },
+        { "name": "link", "type": "url", "required": true },
+        {
+          "name": "isExternal",
+          "widget": "boolean",
+          "default": true,
+          "required": true
+        },
+        { "name": "tech", "widget": "list", "required": false },
+        { "name": "featured", "widget": "boolean", "default": false }
+      ]
+    },
+    {
+      "name": "videos",
+      "label": "Videos",
+      "icon": "video_library",
+      "label_singular": "Video",
+      "folder": "/src/content/videos",
+      "editor": { "preview": false },
+      "format": "json",
+      "fields": [
+        { "name": "title", "label": "Title", "required": true },
+        {
+          "name": "description",
+          "widget": "text",
+          "label": "Description",
+          "required": false
+        },
+        {
+          "name": "thumbnail",
+          "label": "Thumbnail",
+          "widget": "image",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "label": "Categories",
+          "widget": "relation",
+          "multiple": true,
+          "min": 1,
+          "required": true,
+          "collection": "categories",
+          "search_fields": ["title"],
+          "display_fields": ["title"],
+          "value_field": "{{slug}}"
+        },
+        { "name": "youtubeUrl", "type": "url", "required": true }
+      ]
+    }
+  ]
+}
