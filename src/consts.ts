@@ -2,6 +2,9 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = "CoreX4Dev";
+export const SITE_NAME = "CoreX4Dev";
 export const SITE_DESCRIPTION =
   "Una plataforma profesional para Daniel Gonzalez Cuetara (CoreX4Dev), centrada en desarrollo web, CMS, pagos y autenticación. Incluye blog con Markdown, galería de vídeos y asistente IA.";
 export const SITE_URL = "https://corex4dev.com";
+
+export const AUTHOR_NAME = "Daniel Gonzalez Cuetara";

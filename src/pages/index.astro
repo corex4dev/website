@@ -1,5 +1,17 @@
 ---
+import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
+import {
+  ORGANIZATION_SCHEMA,
+  PERSON_SCHEMA,
+  getWebsiteSchema,
+} from "@/utils/jsonld";
 ---
 
-<WebsiteLayout seoProps={{}}>Hello content</WebsiteLayout>
+<WebsiteLayout seoProps={{}}
+  >Hello content
+
+  <JsonLd schema={ORGANIZATION_SCHEMA} />
+  <JsonLd schema={PERSON_SCHEMA} />
+  <JsonLd schema={getWebsiteSchema()} />
+</WebsiteLayout>
