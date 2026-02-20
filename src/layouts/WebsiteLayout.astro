@@ -1,0 +1,31 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import type { ImageMetadata } from "astro";
+import { ClientRouter } from "astro:transitions";
+import MainLayout from "./MainLayout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+interface Props {
+  seoProps: {
+    title?: string;
+    description?: string;
+    type?: "website" | "article" | "product";
+    image?: ImageMetadata;
+  };
+}
+
+const { seoProps } = Astro.props;
+---
+
+<MainLayout seoProps={seoProps}>
+  <div class="min-h-screen grid grid-rows-[auto_1fr_auto] font-sans antialiased">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- AIAssistant -->
+  </div>
+</MainLayout>

@@ -1,0 +1,32 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import type { ImageMetadata } from "astro";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  seoProps: {
+    title?: string;
+    description?: string;
+    type?: "website" | "article" | "product";
+    image?: ImageMetadata;
+  };
+}
+
+const {
+  seoProps: { description, title, image, type },
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <ClientRouter />
+    <BaseHead
+      title={title}
+      description={description}
+      type={type}
+      image={image}
+    />
+  </head>
+  <body class="bg-slate-50 text-slate-900"><slot /></body>
+</html>

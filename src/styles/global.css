@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+	min-width: 350px;
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;
@@ -16,4 +20,23 @@
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+a.nav-link {
+	@apply text-slate-600 hover:text-indigo-600;
+}
+
+a.nav-link.active {
+	@apply text-indigo-600 border-b-2 border-indigo-600;
+}
+
+#navMenu {
+	max-height: 0;
+	display: block;
+
+	&.open-menu {
+		overflow: hidden;
+		transition: max-height 300ms ease-in-out;
+		max-height: 600px;
+	}
 }
