@@ -45,8 +45,10 @@ const video = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    thumbnail: z.string().optional(),
-    categories: z.array(z.string()).min(1),
+    thumbnail: z.string(),
+    categories: z.string(),
+    date: z.coerce.date(),
+    featured: z.boolean(),
     youtubeUrl: z.string(),
   }),
 });

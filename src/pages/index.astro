@@ -1,15 +1,32 @@
 ---
-import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
+
 import {
   ORGANIZATION_SCHEMA,
   PERSON_SCHEMA,
   getWebsiteSchema,
 } from "@/utils/jsonld";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+import Hero from "@/components/home/Hero.astro";
+import Expertise from "@/components/home/Expertise.astro";
+import Method from "@/components/home/Method.astro";
+import FeaturedPosts from "@/components/home/FeaturedPosts.astro";
+import Testimonials from "@/components/home/Testimonials.astro";
+import RecentVideos from "@/components/home/RecentVideos.astro";
+import CTA from "@/components/home/CTA.astro";
 ---
 
-<WebsiteLayout seoProps={{}}
-  >Hello content
+<WebsiteLayout seoProps={{}}>
+  <div class="space-y-20 pb-20">
+    <Hero />
+    <Expertise />
+    <Method />
+    <FeaturedPosts />
+    <Testimonials />
+    <RecentVideos />
+    <CTA />
+  </div>
 
   <JsonLd schema={ORGANIZATION_SCHEMA} />
   <JsonLd schema={PERSON_SCHEMA} />

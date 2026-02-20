@@ -1,12 +1,19 @@
 ---
 import Logo from "@/assets/favicon.svg";
+import { Image } from "astro:assets";
 ---
 
 <footer class="bg-white border-t border-slate-200 py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-8">
       <div class="flex items-center gap-2">
-        <img {...Logo} alt="Logo CoreX4Dev" class="w-8 h-8" />
+        <Image
+          src={Logo}
+          alt="Logo CoreX4Dev"
+          loading="lazy"
+          alt="Logo CoreX4Dev"
+          class="w-8 h-8"
+        />
         <span class="font-bold text-xl text-slate-900">CoreX4Dev</span>
       </div>
       <p class="text-slate-500 text-sm text-center">
@@ -14,8 +21,8 @@ import Logo from "@/assets/favicon.svg";
       </p>
       <div class="flex gap-6 text-slate-400 text-sm font-medium">
         <a href="/productos" class="hover:text-indigo-600">Proyectos</a>
-        <a href="#" class="hover:text-indigo-600">Privacidad</a>
-        <a href="#" class="hover:text-indigo-600">Contacto</a>
+        <!-- <a href="#" class="hover:text-indigo-600">Privacidad</a>
+        <a href="#" class="hover:text-indigo-600">Contacto</a> -->
       </div>
     </div>
   </div>

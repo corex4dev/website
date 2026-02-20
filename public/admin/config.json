@@ -82,7 +82,7 @@
           "collection": "categories",
           "search_fields": ["title"],
           "display_fields": ["title"],
-          "value_field": "{{slug}}"
+          "value_field": "{{title}}"
         },
         { "name": "body", "widget": "markdown", "required": true }
       ]
@@ -156,16 +156,23 @@
           "required": true
         },
         {
+          "name": "date",
+          "widget": "datetime",
+          "required": true,
+          "time_format": false,
+          "default": "{{now}}"
+        },
+        { "name": "featured", "widget": "boolean", "default": true },
+        {
           "name": "categories",
           "label": "Categories",
           "widget": "relation",
-          "multiple": true,
-          "min": 1,
+          "multiple": false,
           "required": true,
           "collection": "categories",
           "search_fields": ["title"],
           "display_fields": ["title"],
-          "value_field": "{{slug}}"
+          "value_field": "{{title}}"
         },
         { "name": "youtubeUrl", "type": "url", "required": true }
       ]

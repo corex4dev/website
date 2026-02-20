@@ -1,0 +1,83 @@
+---
+import { ShieldCheck, Code } from "@lucide/astro";
+
+const steps = [
+  {
+    t: "Arquitectura Primero",
+    d: "Antes de escribir una línea de código, diseñamos la estructura de datos y el flujo de información.",
+  },
+  {
+    t: "Implementación Pragmática",
+    d: "Usamos las herramientas que mejor resuelven el problema, sin fanatismos tecnológicos.",
+  },
+  {
+    t: "Escalabilidad por Defecto",
+    d: "Cada decisión técnica se toma pensando en el crecimiento futuro del producto.",
+  },
+];
+---
+
+{/* Methodology Section */}
+<section class="bg-slate-900 py-32 text-white overflow-hidden relative">
+  <div
+    class="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[120px] rounded-full translate-x-1/2"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div>
+        <h2 class="text-4xl lg:text-6xl font-black mb-8 leading-tight">
+          El Método <br /><span class="text-indigo-400">CoreX4Dev</span>
+        </h2>
+        <p class="text-xl text-slate-400 mb-12 leading-relaxed">
+          Aprender a programar es fácil. Aprender a construir productos que
+          escalan y generan dinero requiere un sistema.
+        </p>
+        <div class="space-y-8">
+          {
+            steps.map((step, i) => (
+              <div class="flex gap-6">
+                <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center font-black text-xl shrink-0">
+                  {i + 1}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">{step.t}</h3>
+                  <p class="text-slate-400">{step.d}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="relative">
+        <div
+          class="aspect-square bg-linear-to-br from-indigo-500 to-purple-600 rounded-[4rem] p-1 shadow-2xl rotate-3"
+        >
+          <div
+            class="w-full h-full bg-slate-900 rounded-[3.8rem] flex items-center justify-center p-12"
+          >
+            <div class="space-y-6 w-full">
+              <div class="h-4 w-3/4 bg-white/10 rounded-full"></div>
+              <div class="h-4 w-full bg-white/10 rounded-full"></div>
+              <div class="h-4 w-5/6 bg-white/10 rounded-full"></div>
+              <div class="pt-8">
+                <div class="grid grid-cols-2 gap-4">
+                  <div
+                    class="aspect-video bg-indigo-600/20 rounded-2xl border border-indigo-500/30 flex items-center justify-center"
+                  >
+                    <Code size={32} class="text-indigo-400" />
+                  </div>
+                  <div
+                    class="aspect-video bg-emerald-600/20 rounded-2xl border border-emerald-500/30 flex items-center justify-center"
+                  >
+                    <ShieldCheck size={32} class="text-emerald-400" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

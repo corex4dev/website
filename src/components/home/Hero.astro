@@ -1,0 +1,61 @@
+---
+import { SparklesIcon } from "@lucide/astro";
+---
+
+{/* Hero Section */}
+<section class="relative pt-20 lg:pt-32 pb-16 overflow-hidden">
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10 pointer-events-none"
+  >
+    <div
+      class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-600 rounded-full blur-[120px]"
+    >
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div
+      class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-bold mb-8 border border-indigo-100 animate-fade-in"
+    >
+      <SparklesIcon class="w-4 h-4" />
+      <span>Nuevos tutoriales cada semana</span>
+    </div>
+    <h1
+      class="text-6xl lg:text-8xl font-black text-slate-900 tracking-tight leading-[0.9] mb-8"
+    >
+      Domina la web moderna <br />
+      <span
+        class="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-violet-600"
+        >desde el núcleo</span
+      >
+    </h1>
+    <p
+      class="mt-6 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed font-medium"
+    >
+      Tutoriales profundos sobre <span class="text-slate-900 font-bold"
+        >Headless CMS</span
+      >, <span class="text-slate-900 font-bold">Stripe</span> y <span
+        class="text-slate-900 font-bold">Autenticación</span
+      >. Eleva tus habilidades con el contenido de CoreX4Dev.
+    </p>
+    <div class="mt-12 flex flex-col sm:flex-row justify-center gap-6">
+      <a
+        href="/blog"
+        class="px-10 py-5 bg-indigo-600 text-white rounded-2xl font-black text-lg hover:bg-indigo-700 transition-all shadow-2xl shadow-indigo-200 hover:-translate-y-1"
+      >
+        Explorar Blog
+      </a>
+      <a
+        href="https://youtube.com/@CoreX4Dev"
+        target="_blank"
+        class="px-10 py-5 bg-white text-slate-900 border-2 border-slate-100 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all hover:border-slate-200"
+      >
+        Ver Canal de YouTube
+      </a>
+    </div>
+  </div>
+</section>

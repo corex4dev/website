@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import { ArrowRight } from "@lucide/astro";
+import { Image } from "astro:assets";
+
+const featuredPost = (
+  await getCollection("blog", (e) => e.data.featured && e.data.published)
+)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .at(0);
+---
+
+{/* Featured Post */}
+{
+  featuredPost && (
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-end mb-10">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900">Artículo Destacado</h2>
+          <p class="text-slate-500 mt-2">Lo último en nuestro blog técnico</p>
+        </div>
+        <a
+          href="/blog"
+          class="hidden sm:flex items-center gap-2 text-indigo-600 font-semibold hover:gap-3 transition-all"
+        >
+          Ver todo el blog <ArrowRight size={20} />
+        </a>
+      </div>
+      <a
+        href={`/blog/${featuredPost.id}`}
+        class="group block relative h-100 lg:h-125 rounded-3xl overflow-hidden"
+      >
+        <Image
+          width={1920}
+          height={1080}
+          src={featuredPost.data.image}
+          alt={featuredPost.data.title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div class="absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end p-8 lg:p-12">
+          <div class="flex flex-wrap items-center gap-2">
+            {featuredPost.data.categories.map((c) => (
+              <span class="bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold w-fit mb-4">
+                {c}
+              </span>
+            ))}
+          </div>
+          <h3 class="text-3xl lg:text-5xl font-bold text-white mb-4 max-w-3xl leading-tight">
+            {featuredPost.data.title}
+          </h3>
+          <p class="text-slate-200 text-lg lg:text-xl max-w-2xl line-clamp-2">
+            {featuredPost.data.description}
+          </p>
+        </div>
+      </a>
+    </section>
+  )
+}

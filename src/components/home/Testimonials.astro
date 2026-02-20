@@ -1,0 +1,62 @@
+---
+import { Star } from "@lucide/astro";
+
+const testimonials = [
+  {
+    name: "Carlos R.",
+    role: "Fullstack Dev",
+    text: "Los tutoriales de PayPal me ahorraron semanas de investigación. Directo al grano y con código real.",
+  },
+  {
+    name: "Elena M.",
+    role: "Frontend Lead",
+    text: "La forma en que Daniel explica Payload CMS es increíble. Por fin entiendo cómo estructurar un CMS de verdad.",
+  },
+  {
+    name: "Marc J.",
+    role: "Freelance",
+    text: "El CMS Decision Pack cambió mi forma de vender proyectos. Ahora mis clientes confían ciegamente en mis decisiones.",
+  },
+];
+---
+
+{/* Testimonials Section */}
+<section class="bg-slate-50 py-18">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 mb-6">
+        Lo que dicen en la comunidad
+      </h2>
+      <p class="text-xl text-slate-500">
+        Cientos de desarrolladores ya están aplicando estos conceptos.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        testimonials.map((t, i) => (
+          <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative">
+            <div class="flex gap-1 text-amber-400 mb-6">
+              {[...Array(5)].map((_, i) => (
+                <Star size={18} fill="currentColor" />
+              ))}
+            </div>
+            <p class="text-slate-600 text-lg italic mb-8 leading-relaxed">
+              "{t.text}"
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">
+                {t.name[0]}
+              </div>
+              <div>
+                <p class="font-black text-slate-900">{t.name}</p>
+                <p class="text-sm text-slate-400 font-bold uppercase tracking-tighter">
+                  {t.role}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

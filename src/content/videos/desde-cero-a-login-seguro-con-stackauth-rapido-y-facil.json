@@ -1,0 +1,9 @@
+{
+  "title": "Desde cero a login seguro con StackAuth (rápido y fácil)",
+  "description": "En este video te muestro, paso a paso y de forma sencilla, cómo arrancar con StackAuth: desde crear la base con su CLI hasta ver el login en acción y gestionar permisos. Todo explicado para que lo entiendas aunque no seas experto en backend.",
+  "thumbnail": "/uploads/Stackauth intro.png",
+  "date": "2025-09-03",
+  "featured": true,
+  "categories": "Autenticación",
+  "youtubeUrl": "https://www.youtube.com/watch?v=X4LvgUj7CzA"
+}
