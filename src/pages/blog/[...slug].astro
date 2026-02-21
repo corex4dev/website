@@ -40,15 +40,15 @@ const { Content } = await render(post);
   }}
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <a
-      href="/blog"
+    <button
       class="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 mb-10 transition-colors group"
+      onclick="backToBlog()"
     >
       <ArrowLeft
         size={20}
         class="group-hover:-translate-x-1 transition-transform"
       /> Volver al blog
-    </a>
+    </button>
 
     <header class="mb-12">
       <div class="flex items-center gap-3 mb-6">
@@ -166,6 +166,14 @@ const { Content } = await render(post);
       alert(
         "Tu navegador no es compatible con compartir contenido. El enlace de la página se ha copiado al portapapeles",
       );
+    }
+  }
+
+  function backToBlog() {
+    if (window.history.length > 1 && document.referrer) {
+      window.history.back();
+    } else {
+      window.location.href = new URL("/blog", window.location.href);
     }
   }
 </script>

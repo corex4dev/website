@@ -1,0 +1,48 @@
+---
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+
+interface Props {
+  totalPages: number;
+  currentPage: number;
+}
+
+const { currentPage, totalPages } = Astro.props;
+---
+
+{
+  totalPages > 1 && (
+    <div class="mt-16 flex justify-center items-center gap-4">
+      <button
+        disabled={currentPage === 1}
+        class="p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-indigo-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+        aria-label="Página anterior"
+      >
+        <ChevronLeft size={20} />
+      </button>
+
+      <div class="flex items-center gap-2">
+        {Array(totalPages).map((_, i) => (
+          // onClick={() => goToPage(i)}
+          <button
+            class={`w-10 h-10 rounded-xl font-bold transition-all ${
+              currentPage === i + 1
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-100 scale-110"
+                : "bg-white text-slate-500 border border-slate-200 hover:border-indigo-400 hover:text-indigo-600"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
+
+      {/* onClick={() => goToPage(currentPage + 1)} */}
+      <button
+        disabled={currentPage === totalPages}
+        class="p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-indigo-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+        aria-label="Página siguiente"
+      >
+        <ChevronRight size={20} />
+      </button>
+    </div>
+  )
+}
