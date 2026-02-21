@@ -13,6 +13,7 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@astropub/md": "^1.0.0",
+    "@iconify-json/bxl": "^1.2.4",
     "@iconify-json/fa7-brands": "^1.2.2",
     "@iconify-json/logos": "^1.2.10",
     "@lucide/astro": "^0.575.0",

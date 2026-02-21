@@ -28,5 +28,26 @@ const {
       image={image}
     />
   </head>
-  <body class="bg-slate-50 text-slate-900"><slot /></body>
+  <body class="bg-slate-50 text-slate-900"
+    ><slot />
+
+    <script is:inline>
+      const addYear = () => {
+        try {
+          const currentYear = new Date().getFullYear().toString();
+          const yearElement = document.getElementById("year");
+          if (yearElement) {
+            yearElement.textContent = currentYear;
+          } else {
+            console.error("Element with id 'year' not found.");
+          }
+        } catch (error) {
+          console.error("Error inserting current year:", error);
+        }
+      };
+
+      document.addEventListener("astro:page-load", addYear);
+      document.addEventListener("astro:after-preparation", addYear);
+    </script>
+  </body>
 </html>

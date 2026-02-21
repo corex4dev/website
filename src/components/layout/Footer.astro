@@ -89,7 +89,8 @@ import { Image } from "astro:assets";
             <li>
               <a
                 href="/cms-decision-pack"
-                class="hover:text-indigo-400 transition-colors">CMS Decision Pack</a
+                class="hover:text-indigo-400 transition-colors"
+                >CMS Decision Pack</a
               >
             </li>
           </ul>
@@ -202,22 +203,3 @@ import { Image } from "astro:assets";
     </div>
   </div>
 </footer>
-
-<script>
-  const addYear = () => {
-    try {
-      const currentYear = new Date().getFullYear().toString();
-      const yearElement = document.getElementById("year");
-      if (yearElement) {
-        yearElement.textContent = currentYear;
-      } else {
-        console.error("Element with id 'year' not found.");
-      }
-    } catch (error) {
-      console.error("Error inserting current year:", error);
-    }
-  };
-
-  document.addEventListener("astro:page-load", addYear);
-  document.addEventListener("astro:after-preparation", addYear);
-</script>

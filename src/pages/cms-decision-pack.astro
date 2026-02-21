@@ -1,0 +1,507 @@
+---
+import JsonLd from "@/components/layout/JsonLd.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getBreadcrumbSchema, getProductSchema } from "@/utils/jsonld";
+import {
+  ArrowRight,
+  CircleCheck,
+  ChevronDown,
+  CircleAlert,
+  FileText,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+  TrendingUp,
+} from "@lucide/astro";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+const productData: CollectionEntry<"product"> = {
+  id: "cms-decision-pack",
+  data: {
+    title: "CMS Decision Pack",
+    description:
+      "Un sistema profesional para freelancers que necesitan justificar decisiones técnicas de CMS.",
+    price: 39.99,
+    featured: true,
+    isExternal: false,
+    link: "/cms-decision-pack",
+    listOrder: 1,
+    tech: [],
+    type: "product",
+  },
+  collection: "product",
+};
+
+const formattedPrice = Intl.NumberFormat("es-MX", {
+  style: "currency",
+  currency: "USD",
+  currencyDisplay: "narrowSymbol",
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 2,
+}).format(productData.data.price);
+
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Inicio", item: "/" },
+  { name: "Productos", item: "/productos" },
+  { name: "CMS Decision Pack", item: "/cms-pack" },
+]);
+
+const checkoutLink =
+  "https://buy.polar.sh/polar_cl_QbHqYaDRt0SqfSPB29DNpCxwZNZFuqGs7fMji0MPTJF";
+---
+
+<MainLayout
+  seoProps={{
+    title: "CMS Decision Pack",
+    description:
+      "Justifica tus decisiones de CMS frente a clientes con un marco profesional. Guía teórica, toolkit de evaluación y plantillas incluidas.",
+  }}
+>
+  <div
+    class="overflow-x-hidden selection:bg-indigo-200 selection:text-indigo-900 antialiased min-h-screen font-sans"
+  >
+    {/* Hero Section */}
+    <section
+      class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 border-b border-slate-100 overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 opacity-15 pointer-events-none"
+      >
+        <div
+          class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-600 rounded-full blur-[120px]"
+        >
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-full border border-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-widest"
+          >
+            <Sparkles size={14} />
+            CoreX4Dev Edition
+          </div>
+
+          <h1
+            class="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-8"
+          >
+            Deja de elegir CMS por costumbre.<br />
+            <span class="text-indigo-600 text-[90%]"
+              >Decide como un arquitecto.</span
+            >
+          </h1>
+
+          <p
+            class="text-lg lg:text-xl text-slate-600 leading-relaxed mb-12 max-w-2xl mx-auto font-medium"
+          >
+            Un sistema estructurado para convertir decisiones técnicas en
+            argumentos sólidos que el cliente respeta. Justificable, defendible
+            y profesional.
+          </p>
+
+          <div class="flex flex-col items-center">
+            <a
+              class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 hover:-translate-y-1 group"
+              href={checkoutLink}
+              data-polar-checkout
+              data-polar-checkout-theme="light"
+            >
+              Comprar CMS Decision Pack — {formattedPrice}
+              <ArrowRight
+                class="group-hover:translate-x-1 transition-transform"
+                size={20}
+              />
+            </a>
+
+            <div
+              class="mt-8 flex items-center justify-center gap-6 text-slate-400 grayscale opacity-70"
+            >
+              <a
+                href="https://polar.sh"
+                target="_blank"
+                class="text-xs font-bold uppercase tracking-tighter flex items-center gap-1"
+                >Powered by <Icon name="bxl:polar" size={20} /> Polar</a
+              >
+              <span class="text-xs font-bold uppercase tracking-tighter"
+                >Instant Access</span
+              >
+              <span class="text-xs font-bold uppercase tracking-tighter"
+                >Lifetime Updates</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-slate-300"
+      >
+        <ChevronDown size={32} />
+      </div>
+    </section>
+
+    {/* The Pain Section */}
+    <section class="bg-slate-900 py-32 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 class="text-4xl font-black mb-8 leading-tight">
+              ¿Te suena familiar?
+            </h2>
+            <div class="space-y-6">
+              {
+                [
+                  "Siempre usas el mismo CMS aunque el proyecto sea distinto.",
+                  "El cliente te pregunta “¿por qué este?” y tu respuesta no suena contundente.",
+                  "Tienes miedo de que el CMS se quede corto cuando el proyecto escale.",
+                  "Terminas defendiendo decisiones con intuición, no con estructura.",
+                ].map((item, i) => (
+                  <div class="flex gap-4 items-start bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <CircleAlert class="text-red-400 shrink-0" size={24} />
+                    <p class="text-lg text-slate-300">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div
+            class="bg-indigo-600/10 p-12 rounded-[3rem] border border-indigo-500/20 text-center"
+          >
+            <h3 class="text-3xl font-black mb-6 italic text-indigo-400">
+              Si eso te pasa, no es falta de experiencia.
+            </h3>
+            <p class="text-6xl font-black mb-8">
+              Es falta de un sistema de decisión.
+            </p>
+            <p class="text-xl text-slate-400">
+              Un método probado para transformar incertidumbre en una
+              recomendación sólida, defendible y lista para presentar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* The Solution / What it includes */}
+    <section class="py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24">
+        <h2 class="text-4xl lg:text-6xl font-black text-slate-900 mb-8">
+          Qué es el CMS Decision Pack
+        </h2>
+        <p class="max-w-3xl mx-auto text-xl text-slate-600 leading-relaxed">
+          Es un marco profesional para evaluar CMS con precisión. Integra
+          análisis, criterios y estructura en un proceso claro que reduce la
+          complejidad y te permite comunicar decisiones con autoridad.
+        </p>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+          >
+            <div
+              class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8"
+            >
+              <ShieldCheck size={32} />
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Guía Teórica</h3>
+            <p class="text-slate-500 leading-relaxed text-lg">
+              El fundamento del método, explicado con claridad y enfoque
+              estratégico. Aprende el porqué detrás de cada fase.
+            </p>
+          </div>
+          <div
+            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+          >
+            <div
+              class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8"
+            >
+              <Zap size={32} />
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Toolkit de Evaluación</h3>
+            <p class="text-slate-500 leading-relaxed text-lg">
+              Las fases, criterios y matriz comparativa que estructuran el
+              análisis de cualquier CMS del mercado.
+            </p>
+          </div>
+          <div
+            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+          >
+            <div
+              class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8"
+            >
+              <FileText size={32} />
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Plantilla de Análisis</h3>
+            <p class="text-slate-500 leading-relaxed text-lg">
+              El entregable profesional para presentar la decisión final al
+              cliente con argumentos sólidos y confianza visual.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Mid-Page CTA */}
+    <section class="py-12 bg-indigo-600">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-white text-xl font-bold mb-8">
+          Obtén el marco profesional para evaluar CMS con rigor técnico.
+        </p>
+        <a
+          class="bg-white text-indigo-600 hover:bg-slate-50 shadow-indigo-900/20 inline-flex items-center justify-center gap-3 px-10 rounded-2xl font-black transition-all shadow-xl hover:-translate-y-1 group text-lg py-5"
+          href={checkoutLink}
+          data-polar-checkout
+          data-polar-checkout-theme="light"
+        >
+          Obtener el Pack Ahora — {formattedPrice}
+          <ArrowRight
+            class="group-hover:translate-x-1 transition-transform"
+            size={20}
+          />
+        </a>
+      </div>
+    </section>
+
+    {/* How it works */}
+    <section class="py-32 border-y border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-20">
+          <div class="lg:w-1/3">
+            <h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">
+              Cómo funciona el sistema
+            </h2>
+            <p class="text-lg text-slate-500 mb-8">
+              Un proceso de 4 pasos diseñado para eliminar la parálisis por
+              análisis y ganar autoridad.
+            </p>
+            <div class="p-8 bg-indigo-600 rounded-3xl text-white">
+              <p class="text-lg font-medium mb-4">
+                "Obtén una evaluación clara, estructurada y justificable de
+                cualquier CMS, incluso en proyectos complejos."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="bg-white/20 p-2 rounded-lg">
+                  <Sparkles size={16} />
+                </div>
+                <div>
+                  <p class="font-bold text-sm leading-none">
+                    Framework CoreX4Dev
+                  </p>
+                  <p
+                    class="text-xs text-indigo-200 uppercase tracking-widest font-bold mt-1"
+                  >
+                    SISTEMA PROBADO
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {
+              [
+                {
+                  n: "01",
+                  t: "Diagnostica",
+                  d: "Analiza el proyecto con precisión técnica y de negocio desde el inicio.",
+                },
+                {
+                  n: "02",
+                  t: "Evalúa por capas",
+                  d: "Analiza cada CMS separando lo esencial de lo crítico para el éxito del desarrollo.",
+                },
+                {
+                  n: "03",
+                  t: "Compara Objetivamente",
+                  d: "Utiliza criterios técnicos y de mantenibilidad para evitar sesgos por costumbre.",
+                },
+                {
+                  n: "04",
+                  t: "Presenta con Autoridad",
+                  d: "Muestra una decisión clara, argumentada y defendible que el cliente respetará.",
+                },
+              ].map((step, i) => (
+                <div class="p-10 bg-white rounded-3xl border border-slate-100 shadow-sm relative group hover:border-indigo-200 transition-all">
+                  <div class="text-5xl font-black text-indigo-50 absolute top-6 right-8 group-hover:text-indigo-100 transition-colors select-none">
+                    {step.n}
+                  </div>
+                  <h3 class="text-2xl font-black text-slate-900 mb-4 relative z-10">
+                    {step.t}
+                  </h3>
+                  <p class="text-slate-500 leading-relaxed relative z-10">
+                    {step.d}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Why it works */}
+    <section class="py-32 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-6xl font-black mb-6">
+            Por qué este método funciona
+          </h2>
+          <p class="text-xl text-slate-400">
+            Diseñado para la realidad del freelance y la agencia moderna.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            [
+              {
+                t: "Consultor vs Implementador",
+                d: "Te posiciona como estratega técnico, justificando honorarios de consultoría más altos.",
+              },
+              {
+                t: "Menos Riesgo Técnico",
+                d: "Reduce el riesgo de elegir un CMS que se rompa o limite el crecimiento del proyecto.",
+              },
+              {
+                t: "Justificación Profesional",
+                d: "Convierte una opinión subjetiva en una recomendación corporativa inatacable.",
+              },
+              {
+                t: "Fin de Debates Eternos",
+                d: "Cierra discusiones técnicas con datos objetivos y criterios de evaluación claros.",
+              },
+              {
+                t: "Proceso Repetible",
+                d: "Un framework que escala contigo, permitiéndote ser más eficiente en cada preventa.",
+              },
+              {
+                t: "Valor Percibido",
+                d: "Aumenta tu valor profesional al entregar documentación técnica de nivel agencia.",
+              },
+            ].map((item, i) => (
+              <div class="flex gap-5 p-8 bg-white/5 rounded-3xl border border-white/10 group hover:bg-white/10 transition-colors">
+                <CircleCheck class="text-indigo-400 shrink-0 mt-1" size={24} />
+                <div>
+                  <h4 class="text-xl font-bold mb-3">{item.t}</h4>
+                  <p class="text-slate-400 leading-relaxed">{item.d}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Pricing / Final CTA */}
+    <section class="py-28 lg:py-36 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-16">
+          <span
+            class="bg-indigo-600 text-white px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-8 inline-block"
+          >
+            Acceso Inmediato
+          </span>
+          <h2 class="text-4xl lg:text-6xl font-black text-slate-900 mb-6">
+            Empieza hoy mismo
+          </h2>
+          <p class="text-xl text-slate-500 font-medium">
+            Obtén todo el sistema por un precio único y profesional.
+          </p>
+        </div>
+
+        <div
+          class="bg-slate-50 rounded-[4rem] p-12 lg:py-16 lg:px-20 border border-slate-100 shadow-2xl relative"
+        >
+          <div
+            class="absolute top-0 right-10 -translate-y-1/2 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 rotate-3 hidden lg:block"
+          >
+            <p class="text-indigo-600 font-black text-xl tracking-tighter">
+              PRECIO FINAL
+            </p>
+          </div>
+
+          <div class="mb-12">
+            <span class="text-7xl lg:text-8xl font-black text-slate-900"
+              >{formattedPrice}</span
+            >
+            <p class="text-slate-400 font-bold mt-4 uppercase tracking-[0.3em]">
+              Pago único • Acceso de por vida
+            </p>
+          </div>
+
+          <div class="max-w-md mx-auto space-y-5 text-left mb-16">
+            {
+              [
+                "Guía Teórica: Estrategia y Toma de Decisiones",
+                "Toolkit: Matrices de Evaluación y Comparativa",
+                "Plantilla: Presentación Final para Cliente",
+                "Acceso a actualizaciones futuras del pack",
+              ].map((benefit, i) => (
+                <div class="flex gap-4 items-center">
+                  <div class="bg-emerald-500 text-white rounded-full p-1">
+                    <CircleCheck size={16} />
+                  </div>
+                  <span class="text-lg text-slate-700 font-medium">
+                    {benefit}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+
+          <a
+            class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 rounded-2xl font-black hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 hover:-translate-y-1 group w-full text-xl py-6"
+            href={checkoutLink}
+            data-polar-checkout
+            data-polar-checkout-theme="light"
+          >
+            Comprar CMS Decision Pack — {formattedPrice}
+            <ArrowRight
+              class="group-hover:translate-x-1 transition-transform"
+              size={20}
+            />
+          </a>
+
+          <div
+            class="mt-10 pt-10 border-t border-slate-200 flex flex-col items-center gap-6"
+          >
+            <p class="text-slate-400 text-sm font-medium">
+              Garantía de satisfacción CoreX4Dev • Soporte prioritario vía Email
+            </p>
+            <div class="flex gap-8">
+              <ShieldCheck class="text-slate-300" size={32} />
+              <Zap class="text-slate-300" size={32} />
+              <TrendingUp class="text-slate-300" size={32} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Simple Footer for Landing */}
+    <footer
+      class="py-10 text-center text-slate-400 text-sm border-t border-slate-100 bg-slate-50"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="font-bold text-slate-900 mb-2">
+          CoreX4Dev — Daniel Gonzalez Cuetara
+        </p>
+        <p>© <span id="year"></span> Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.1/dist/embed.global.js"
+    defer
+    data-auto-init></script>
+
+  <JsonLd schema={getProductSchema(productData)} />
+  <JsonLd schema={breadcrumbSchema} />
+</MainLayout>

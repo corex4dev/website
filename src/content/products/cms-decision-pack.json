@@ -5,8 +5,12 @@
   "thumbnail": "",
   "link": "/cms-decision-pack",
   "isExternal": false,
-  "tech": ["CMS", "Framework", "Estrategia"],
+  "price": 39.99,
+  "tech": [
+    "CMS",
+    "Framework",
+    "Estrategia"
+  ],
   "featured": true,
-  "listOrder": 1,
-  "price": 49.99
+  "listOrder": 1
 }
