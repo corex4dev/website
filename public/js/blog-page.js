@@ -6,7 +6,7 @@ const searchFuncPosts = () => {
     if (postsContainer.__initialized) return;
     postsContainer.__initialized = true;
 
-    const PER_PAGE = 1;
+    const PER_PAGE = 12;
     let currentPage = 1;
 
     const cacheKey = location.pathname;
