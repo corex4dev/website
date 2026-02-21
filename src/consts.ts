@@ -8,3 +8,21 @@ export const SITE_DESCRIPTION =
 export const SITE_URL = "https://corex4dev.com";
 
 export const AUTHOR_NAME = "Daniel Gonzalez Cuetara";
+
+export const socialLinks: { icon: string; name: string; url: string }[] = [
+  {
+    icon: "fa7-brands:youtube",
+    name: "YouTube",
+    url: "https://youtube.com/@corex4dev",
+  },
+  {
+    icon: "fa7-brands:instagram",
+    name: "Instagram",
+    url: "https://instagram.com/corex4dev",
+  },
+  {
+    icon: "fa7-brands:github",
+    name: "Github",
+    url: "https://github.com/corex4dev",
+  },
+];
