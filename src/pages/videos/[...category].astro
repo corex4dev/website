@@ -1,0 +1,26 @@
+---
+import VideosPageLayout from "@/layouts/VideosPageLayout.astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const categories = await getCollection("category");
+  return categories.map((c) => ({
+    params: {
+      category: c.id,
+    },
+  }));
+};
+
+const { category } = Astro.params;
+const categoryEntry = await getEntry("category", category);
+
+const videos = (
+  await getCollection(
+    "video",
+    (v) => v.data.categories === categoryEntry?.data.title,
+  )
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<VideosPageLayout category={category} videos={videos} />

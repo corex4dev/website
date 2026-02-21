@@ -1,0 +1,10 @@
+---
+import VideosPageLayout from "@/layouts/VideosPageLayout.astro";
+import { getCollection } from "astro:content";
+
+const videos = (await getCollection("video")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<VideosPageLayout videos={videos} />

@@ -1,0 +1,159 @@
+---
+import { getCollection } from "astro:content";
+import { Search, Funnel as Filter, Play, ExternalLink } from "@lucide/astro";
+
+import { getBreadcrumbSchema } from "@/utils/jsonld";
+import WebsiteLayout from "./WebsiteLayout.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import CTA from "@/components/videos/CTA.astro";
+import VideoCard from "@/components/videos/VideoCard.astro";
+import Controls from "@/components/videos/Controls.astro";
+
+interface Props {
+  category?: string;
+  videos: CollectionEntry<"video">[];
+}
+
+const { category, videos } = Astro.props;
+
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Inicio", item: "/" },
+  { name: "Videos", item: "/videos" },
+]);
+---
+
+<WebsiteLayout seoProps={{ title: "Galería de Vídeos" }}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+    <header class="mb-10">
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+      >
+        Galería de Vídeos
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-600 max-w-3xl">
+        Aprende desarrollo web paso a paso con los tutoriales del canal <span
+          class="text-red-600 font-semibold">CoreX4Dev</span
+        >.
+      </p>
+    </header>
+
+    <Controls selectedCategory={category} />
+
+    {/* Videos Count info */}
+    <div class="mb-8 text-sm text-slate-500 font-medium">
+      <div>
+        Mostrando <span id="filteredVideosNumber"></span> vídeos de{" "}
+        {videos.length}
+      </div>
+    </div>
+
+    {/* Videos Grid */}
+    <div
+      id="videos"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+    >
+      {videos.map((video) => <VideoCard video={video} />)}
+
+      <div
+        id="emptyStateVideos"
+        class="col-span-full text-center py-20 px-8 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 hidden"
+      >
+        <p class="text-slate-500 text-lg">
+          No encontramos vídeos que coincidan con tu búsqueda.
+        </p>
+        <button
+          id="clearEmptySearch"
+          class="mt-4 text-red-600 font-bold hover:underline transition-all"
+          >Ver todos los vídeos</button
+        >
+      </div>
+    </div>
+
+    <CTA />
+  </div>
+
+  <script is:inline>
+    const searchFunc = () => {
+      const videos = Array.from(document.querySelectorAll("#videos a")).map(
+        (v) => ({
+          el: v,
+          title: v.getElementsByTagName("h3").item(0).textContent,
+        }),
+      );
+
+      const total = videos.length;
+
+      const qInput = document.getElementById("searchInput");
+      const empty = document.getElementById("emptyStateVideos");
+      const filtered = document.getElementById("filteredVideosNumber");
+      const clearBtn = document.getElementById("clearEmptySearch");
+
+      function filterAndRender(q) {
+        const ql = q.trim().toLowerCase();
+        const hiddenVideos = videos.filter((p) => {
+          return ql && !p.title.toLowerCase().includes(ql);
+        });
+
+        videos.forEach((v) => {
+          const shouldHide = hiddenVideos.some((h) => h.el.id === v.el.id);
+          v.el.classList.toggle("hidden", shouldHide);
+        });
+
+        if (hiddenVideos.length === total) {
+          empty?.classList.remove("hidden");
+        } else {
+          empty?.classList.add("hidden");
+        }
+
+        filtered.innerText = String(total - hiddenVideos.length);
+      }
+
+      // Cuando el usuario cambia filtros -> actualiza URL sin crear nuevo historial
+      function updateURL(q) {
+        const params = new URLSearchParams();
+        if (q) params.set("q", q);
+        const newUrl =
+          location.pathname +
+          (params.toString() ? "?" + params.toString() : "");
+        window.history.replaceState(null, "", newUrl);
+      }
+
+      function clearSearch() {
+        if (!qInput) return;
+        qInput.value = "";
+        updateURL("");
+        filterAndRender("");
+        qInput.focus();
+      }
+
+      if (qInput) {
+        qInput.oninput = () => {
+          updateURL(qInput.value);
+          filterAndRender(qInput.value);
+        };
+      }
+
+      // botón externo
+      if (clearBtn) {
+        clearBtn.onclick = clearSearch;
+      }
+
+      const params = new URLSearchParams(location.search);
+      const q = params.get("q") || "";
+      if (qInput) qInput.value = q;
+      filterAndRender(q);
+    };
+
+    const clearSearch = () => {
+      const qInput = document.getElementById("searchInput");
+      if (qInput) qInput.value = "";
+    };
+
+    document.addEventListener("astro:page-load", searchFunc);
+    document.addEventListener("astro:after-swap", searchFunc);
+  </script>
+
+  <JsonLd schema={breadcrumbSchema} />
+</WebsiteLayout>

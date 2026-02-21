@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Play, ExternalLink } from "@lucide/astro";
+
+interface Props {
+  video: CollectionEntry<"video">;
+}
+
+const { video } = Astro.props;
+---
+
+<a
+  transition:name={`video-${video.id}`}
+  href={video.data.youtubeUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  id={`video_${video.id}`}
+  class="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col h-full shadow-sm animate-in fade-in duration-500"
+>
+  <div class="relative aspect-video overflow-hidden bg-slate-100">
+    <Image
+      width={1920}
+      height={1080}
+      loading="eager"
+      src={video.data.thumbnail}
+      alt={video.data.title}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+    <div
+      class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity"
+    >
+      <div
+        class="w-14 h-14 bg-red-600 text-white rounded-full flex items-center justify-center shadow-xl shadow-red-900/40 translate-y-4 group-hover:translate-y-0 transition-transform"
+      >
+        <Play size={24} fill="currentColor" />
+      </div>
+    </div>
+    <div class="absolute top-4 left-4">
+      <span
+        class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-red-600 shadow-sm"
+      >
+        {video.data.categories}
+      </span>
+    </div>
+  </div>
+  <div class="p-6 flex flex-col flex-1">
+    <h3
+      id="title"
+      class="text-lg font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors leading-tight line-clamp-2"
+    >
+      {video.data.title}
+    </h3>
+    <div
+      class="mt-auto flex items-center justify-between text-slate-400 text-xs font-medium"
+    >
+      <span class="flex items-center gap-1">YouTube • CoreX4Dev</span>
+      <ExternalLink
+        size={14}
+        class="group-hover:text-red-600 transition-colors"
+      />
+    </div>
+  </div>
+</a>

@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
 import { getBreadcrumbSchema, PERSON_SCHEMA } from "@/utils/jsonld";
 import JsonLd from "@/components/layout/JsonLd.astro";
+import { Image } from "astro:assets";
 
 const socialLinks: { icon: string; name: string; url: string }[] = [
   {
@@ -84,7 +85,10 @@ const breadcrumbSchema = getBreadcrumbSchema([
         <div class="relative inline-block mb-8">
           <div class="absolute inset-0 bg-indigo-600 rounded-3xl rotate-6">
           </div>
-          <img
+          <Image
+            width={1920}
+            height={1920}
+            loading="eager"
             src="/images/daniel.jpg"
             alt="Daniel"
             class="relative z-10 w-64 h-64 lg:w-full lg:h-auto rounded-3xl object-cover shadow-xl"
@@ -98,7 +102,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
           {
             socialLinks.map((link) => (
               <a
-                aria-details={`Enlace a red social: ${link.name}`}
+                aria-label={`Enlace a red social: ${link.name}`}
                 title={link.name}
                 href={link.url}
                 class="p-3 bg-white border border-slate-100 rounded-xl text-slate-400 hover:text-indigo-600 hover:shadow-md transition-all"
