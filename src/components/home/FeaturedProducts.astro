@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import { ArrowRight, ExternalLink } from "@lucide/astro";
+import { Markdown } from "@astropub/md";
+import { IconsMap } from "../products/consts.ts";
+
+const featuredProjects = (
+  await getCollection("product", (e) => e.data.featured)
+)
+  .sort((a, b) => a.data.listOrder - b.data.listOrder)
+  .slice(0, 3);
+---
+
+{/* Featured Projects Section */}
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex justify-between items-end mb-12">
+    <div>
+      <h2 class="text-4xl font-black text-slate-900">Proyectos Destacados</h2>
+      <p class="text-slate-500 mt-2 text-lg">
+        Herramientas y recursos para desarrolladores
+      </p>
+    </div>
+    <a
+      href="/productos"
+      class="hidden sm:flex items-center gap-2 text-indigo-600 font-bold text-lg hover:gap-4 transition-all"
+    >
+      Ver todos los proyectos <ArrowRight size={24} />
+    </a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {
+      featuredProjects.map((project) => {
+        const Icon = IconsMap[project.data.type].Icon;
+        return (
+          <div class="group bg-white rounded-[2.5rem] border border-slate-100 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all flex flex-col">
+            <div class="flex items-start justify-between mb-6">
+              <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Icon size={28} />
+              </div>
+              <span
+                class={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${
+                  project.data.type === "product"
+                    ? "bg-amber-50 text-amber-600 border-amber-100"
+                    : project.data.type === "package"
+                      ? "bg-red-50 text-red-600 border-red-100"
+                      : "bg-indigo-50 text-indigo-600 border-indigo-100"
+                }`}
+              >
+                {IconsMap[project.data.type].name}
+              </span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+              {project.data.title}
+            </h3>
+            <div
+              class="text-slate-500 mb-6 flex-1 line-clamp-3"
+              title={project.data.description}
+            >
+              <Markdown of={project.data.description} />
+            </div>
+            <div class="mt-auto">
+              {project.data.isExternal ? (
+                <a
+                  href={project.data.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-indigo-600 font-black text-sm hover:gap-3 transition-all"
+                >
+                  Ver recurso <ExternalLink size={16} />
+                </a>
+              ) : (
+                <a
+                  href={new URL(project.data.link, Astro.url)}
+                  class="inline-flex items-center gap-2 text-indigo-600 font-black text-sm hover:gap-3 transition-all"
+                >
+                  Acceder <ArrowRight size={16} />
+                </a>
+              )}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

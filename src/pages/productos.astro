@@ -1,5 +1,131 @@
 ---
+import { getCollection } from "astro:content";
+import { Package } from "@lucide/astro";
+import { Icon } from "astro-icon/components";
 
+import JsonLd from "@/components/layout/JsonLd.astro";
+import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
+import { getBreadcrumbSchema, getProductSchema } from "@/utils/jsonld";
+import ProductCard from "@/components/products/ProductCard.astro";
+
+const projects = (await getCollection("product")).sort(
+  (a, b) => a.data.listOrder - b.data.listOrder,
+);
+
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: "Inicio", item: "/" },
+  { name: "Productos", item: "/productos" },
+]);
+
+const featuredProjects = projects.filter((p) => p.data.featured);
+const otherProjects = projects.filter((p) => !p.data.featured);
 ---
 
-products
+<WebsiteLayout seoProps={{ title: "Productos y Proyectos" }}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <header class="mb-20 text-center">
+      <div
+        class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-sm font-bold mb-6 border border-indigo-100"
+      >
+        <Package size={16} /> Portfolio & Labs
+      </div>
+      <h1
+        class="text-4xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight"
+      >
+        Productos y Proyectos
+      </h1>
+      <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Una colección de herramientas, bibliotecas y recursos diseñados para
+        elevar el estándar del desarrollo web moderno.
+      </p>
+    </header>
+
+    {/* Featured Section */}
+    {
+      featuredProjects.length > 0 && (
+        <section class="mb-24">
+          <div class="flex items-center gap-4 mb-10">
+            <h2 class="text-3xl font-black text-slate-900">Destacados</h2>
+            <div class="h-px flex-1 bg-slate-100" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {featuredProjects.map((project) => (
+              <ProductCard project={project} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {/* All Projects Section */}
+    <section>
+      <div class="flex items-center gap-4 mb-10">
+        <h2 class="text-3xl font-black text-slate-900">Todos los Proyectos</h2>
+        <div class="h-px flex-1 bg-slate-100"></div>
+      </div>
+      {
+        otherProjects.length > 0 ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherProjects.map((project) => (
+              <ProductCard project={project} compact />
+            ))}
+          </div>
+        ) : (
+          <div class="bg-slate-50 rounded-4xl p-12 text-center border-2 border-dashed border-slate-200">
+            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm text-slate-300">
+              <Package size={32} />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              Próximamente más proyectos
+            </h3>
+            <p class="text-slate-500 max-w-md mx-auto">
+              Actualmente todos nuestros proyectos principales están destacados
+              arriba. Estamos trabajando en nuevas herramientas y bibliotecas.
+            </p>
+          </div>
+        )
+      }
+    </section>
+
+    <section
+      class="mt-32 p-12 lg:p-20 bg-slate-900 rounded-[3rem] text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"
+      >
+      </div>
+      <div class="relative z-10">
+        <h2 class="text-3xl lg:text-4xl font-black text-white mb-6">
+          ¿Tienes una idea para una herramienta?
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">
+          Muchos de mis proyectos nacen de problemas reales que encuentro en
+          consultorías. Si crees que falta algo en el ecosistema, hablemos.
+        </p>
+        <div class="flex justify-center gap-4">
+          <a
+            href="https://github.com/corex4dev"
+            target="_parent"
+            class="bg-white/10 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition-all flex items-center gap-2"
+          >
+            <Icon name="fa7-brands:github" size={20} /> Github
+          </a>
+          <a
+            href="mailto:corex4dev@gmail.com"
+            target="_parent"
+            class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition-all"
+          >
+            Contactar
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {
+    projects
+      .filter((p) => p.data.type === "product")
+      .map((p) => <JsonLd schema={getProductSchema({ ...p })} />)
+  }
+  <JsonLd schema={breadcrumbSchema} />
+</WebsiteLayout>

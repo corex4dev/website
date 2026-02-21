@@ -86,9 +86,7 @@ export const getBlogPostSchema = (post: CollectionEntry<"blog">) => ({
   inLanguage: "es-ES",
 });
 
-export const getProductSchema = (
-  product: CollectionEntry<"product"> & { price: string },
-) => ({
+export const getProductSchema = (product: CollectionEntry<"product">) => ({
   "@context": "https://schema.org",
   "@type": "Product",
   "@id": `${SITE_URL}/productos/${product.id}`,
@@ -99,8 +97,8 @@ export const getProductSchema = (
   offers: {
     "@type": "Offer",
     url: `${SITE_URL}/productos`,
-    priceCurrency: "EUR",
-    price: product.price || "0",
+    priceCurrency: "USD",
+    price: product.data.price.toFixed(2) || "0",
     availability: "https://schema.org/InStock",
   },
 });

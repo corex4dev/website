@@ -1,0 +1,16 @@
+{
+  "title": "sonner-next-intl",
+  "description": "Biblioteca NPM que añade soporte de internacionalización sencillo y potente a los toasts de _Sonner_ en aplicaciones **Next.js**.",
+  "type": "package",
+  "thumbnail": "https://sonner-next-intl.vercel.app/_astro/logo.D0vr-RfY_2baSiw.webp",
+  "link": "https://sonner-next-intl.vercel.app/",
+  "isExternal": true,
+  "price": 0,
+  "tech": [
+    "Next.js",
+    "i18n",
+    "Sonner"
+  ],
+  "featured": true,
+  "listOrder": 2
+}

@@ -36,6 +36,8 @@ const product = defineCollection({
     link: z.string(),
     isExternal: z.boolean(),
     featured: z.boolean(),
+    listOrder: z.number(),
+    price: z.number(),
     tech: z.array(z.string()),
   }),
 });
