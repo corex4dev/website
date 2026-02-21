@@ -1,0 +1,163 @@
+---
+import { getBreadcrumbSchema } from "@/utils/jsonld";
+import WebsiteLayout from "./WebsiteLayout.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
+import type { CollectionEntry } from "astro:content";
+import CTA from "@/components/videos/CTA.astro";
+import Controls from "@/components/blog/Controls.astro";
+import PostCard from "@/components/blog/PostCard.astro";
+
+interface Props {
+  category?: string;
+  posts: CollectionEntry<"blog">[];
+}
+
+const { category, posts } = Astro.props;
+
+const breadcrumbs = [
+  { name: "Inicio", item: "/" },
+  { name: "Blog", item: "/blog" },
+];
+
+if (category) {
+  breadcrumbs.push(
+    { name: "Blog Categorías", item: "/blog/categoria" },
+    { name: `Blog Categoría ${category}`, item: `/blog/categoria/${category}` },
+  );
+}
+
+const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
+---
+
+<WebsiteLayout seoProps={{ title: "Blog de Desarrollo Web" }}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+    <header class="mb-16">
+      <h1
+        class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+      >
+        Blog de Desarrollo
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl">
+        Tutoriales detallados, comparativas de herramientas y experiencias
+        reales escalando aplicaciones web.
+      </p>
+    </header>
+
+    <Controls selectedCategory={category} />
+
+    {/* Posts Count info */}
+    <div class="mb-8 text-sm text-slate-500 font-medium">
+      <div>
+        Mostrando <span id="filteredPostsNumber"></span> artículos de{" "}
+        {posts.length}
+      </div>
+    </div>
+
+    {/* Posts Grid */}
+    <div
+      id="posts"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+    >
+      {posts.map((post) => <PostCard post={post} />)}
+
+      <div
+        id="emptyStatePosts"
+        class="col-span-full text-center py-20 px-8 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 hidden"
+      >
+        <p class="text-slate-500 text-lg">
+          No encontramos artículos que coincidan con tu búsqueda.
+        </p>
+        <button
+          id="clearEmptySearch"
+          class="mt-4 text-red-600 font-bold hover:underline transition-all"
+          >Ver todos los posts</button
+        >
+      </div>
+    </div>
+
+    <CTA />
+  </div>
+
+  <script is:inline>
+    const searchFuncPosts = () => {
+      const posts = Array.from(document.querySelectorAll("#posts a")).map(
+        (v) => ({
+          el: v,
+          title: v.getElementsByTagName("h3").item(0).textContent,
+        }),
+      );
+
+      const total = posts.length;
+
+      const qInput = document.getElementById("searchInput");
+      const empty = document.getElementById("emptyStatePosts");
+      const filtered = document.getElementById("filteredPostsNumber");
+      const clearBtn = document.getElementById("clearEmptySearch");
+
+      function filterAndRender(q) {
+        const ql = q.trim().toLowerCase();
+        const hiddenVideos = posts.filter((p) => {
+          return ql && !p.title.toLowerCase().includes(ql);
+        });
+
+        posts.forEach((v) => {
+          const shouldHide = hiddenVideos.some((h) => h.el.id === v.el.id);
+          v.el.classList.toggle("hidden", shouldHide);
+        });
+
+        if (hiddenVideos.length === total) {
+          empty?.classList.remove("hidden");
+        } else {
+          empty?.classList.add("hidden");
+        }
+
+        filtered.innerText = String(total - hiddenVideos.length);
+      }
+
+      // Cuando el usuario cambia filtros -> actualiza URL sin crear nuevo historial
+      function updateURL(q) {
+        const params = new URLSearchParams();
+        if (q) params.set("q", q);
+        const newUrl =
+          location.pathname +
+          (params.toString() ? "?" + params.toString() : "");
+        window.history.replaceState(null, "", newUrl);
+      }
+
+      function clearSearch() {
+        if (!qInput) return;
+        qInput.value = "";
+        updateURL("");
+        filterAndRender("");
+        qInput.focus();
+      }
+
+      if (qInput) {
+        qInput.oninput = () => {
+          updateURL(qInput.value);
+          filterAndRender(qInput.value);
+        };
+      }
+
+      // botón externo
+      if (clearBtn) {
+        clearBtn.onclick = clearSearch;
+      }
+
+      const params = new URLSearchParams(location.search);
+      const q = params.get("q") || "";
+      if (qInput) qInput.value = q;
+      filterAndRender(q);
+    };
+
+    const clearSearch = () => {
+      const qInput = document.getElementById("searchInput");
+      if (qInput) qInput.value = "";
+    };
+
+    document.addEventListener("astro:page-load", searchFuncPosts);
+    document.addEventListener("astro:after-swap", searchFuncPosts);
+  </script>
+
+  <JsonLd schema={breadcrumbSchema} />
+</WebsiteLayout>

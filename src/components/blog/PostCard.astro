@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Play, ExternalLink, Calendar, Clock, ArrowRight } from "@lucide/astro";
+import FormattedDate from "../FormattedDate.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<a
+  transition:name={`post-${post.id}`}
+  href={`/blog/${post.id}`}
+  rel="noopener noreferrer"
+  id={`post_${post.id}`}
+  class="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col h-full shadow-sm animate-in fade-in duration-500"
+>
+  <div
+    class="relative aspect-16/10 overflow-hidden"
+    transition:name={`post-${post.id}-image`}
+  >
+    <Image
+      width={1920}
+      height={1080}
+      loading="eager"
+      src={post.data.image}
+      alt={post.data.title}
+      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+    />
+    <div class="absolute top-4 left-4 flex gap-2 items-center">
+      {
+        post.data.categories
+          .slice(0, 3)
+          .map((c) => (
+            <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 shadow-sm">
+              {c}
+            </span>
+          ))
+      }
+
+      {
+        post.data.categories.length > 3 && (
+          <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 shadow-sm">
+            +{post.data.categories.length - 3}
+          </span>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="p-8 flex flex-col flex-1">
+    <div
+      class="flex items-center gap-4 text-slate-400 text-xs mb-4 font-medium"
+    >
+      <span class="flex items-center gap-1"
+        ><Calendar size={14} /> <FormattedDate date={post.data.date} /></span
+      >
+      {
+        post.data.reading_time && (
+          <span class="flex items-center gap-1">
+            <Clock size={14} /> {post.data.reading_time} min lectura
+          </span>
+        )
+      }
+    </div>
+    <h3
+      transition:name={`post-${post.id}-title`}
+      id="title"
+      class="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors leading-tight"
+    >
+      {post.data.title}
+    </h3>
+    <p class="text-slate-500 text-sm line-clamp-3 mb-6 flex-1">
+      {post.data.description}
+    </p>
+    <div class="flex items-center text-indigo-600 font-bold text-sm">
+      Leer tutorial{" "}
+      <ArrowRight size={16} class="ml-2 group-hover:ml-3 transition-all" />
+    </div>
+  </div>
+</a>

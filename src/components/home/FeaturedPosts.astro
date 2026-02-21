@@ -34,6 +34,7 @@ const featuredPost = (
           width={1920}
           height={1080}
           src={featuredPost.data.image}
+          transition:name={`post-${featuredPost.id}-image`}
           alt={featuredPost.data.title}
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />

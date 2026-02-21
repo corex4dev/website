@@ -1,4 +1,6 @@
 ---
+import BlogPageLayout from "@/layouts/BlogPageLayout.astro";
+import { getBreadcrumbSchema } from "@/utils/jsonld";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
@@ -6,6 +8,4 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<pre>
-	{JSON.stringify(posts, null, 2)}
-</pre>
+<BlogPageLayout posts={posts} />

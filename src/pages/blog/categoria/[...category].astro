@@ -1,0 +1,29 @@
+---
+import BlogPageLayout from "@/layouts/BlogPageLayout.astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const categories = await getCollection("category");
+  return categories.map((c) => ({
+    params: {
+      category: c.id,
+    },
+  }));
+};
+
+const { category } = Astro.params;
+const categoryEntry = await getEntry("category", category);
+
+if (!categoryEntry) {
+  Astro.redirect("/blog");
+}
+
+const posts = (
+  await getCollection("blog", (v) =>
+    v.data.categories.includes(categoryEntry.data.title),
+  )
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BlogPageLayout category={category} posts={posts} />
