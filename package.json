@@ -24,5 +24,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19"
+  },
+  "engines": {
+    "node": ">=20.9.0",
+    "pnpm": "^10"
   }
 }
