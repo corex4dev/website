@@ -10,8 +10,14 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  integrations: [sitemap(), icon()],
-
+  integrations: [
+    sitemap({
+      changefreq: "monthly",
+      priority: 0.9,
+      lastmod: new Date()
+    }),
+    icon()
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

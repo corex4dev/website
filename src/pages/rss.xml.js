@@ -8,9 +8,12 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
+		trailingSlash: false,
 		items: posts.map((post) => ({
 			...post.data,
+			pubDate: post.data.date,
 			link: `/blog/${post.id}/`,
 		})),
+		customData: `<language>es-mx</language>`
 	});
 }
