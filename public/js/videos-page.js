@@ -3,7 +3,7 @@ const searchFunc = () => {
     if (!videosContainer) return;
 
     // evitar doble init (astro:page-load + after-swap)
-    if (videosContainer.__initialized) return;
+    if (videosContainer?.__initialized) return;
     videosContainer.__initialized = true;
 
     // cache global por ruta

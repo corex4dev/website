@@ -2,8 +2,9 @@ window.__BLOG_POSTS_CACHE__ ??= {};
 
 const searchFuncPosts = () => {
     const postsContainer = document.getElementById("posts");
+    if (!postsContainer) return;
 
-    if (postsContainer.__initialized) return;
+    if (postsContainer?.__initialized) return;
     postsContainer.__initialized = true;
 
     const PER_PAGE = 12;

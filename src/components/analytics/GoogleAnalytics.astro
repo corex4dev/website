@@ -1,0 +1,53 @@
+---
+if (!import.meta.env.PROD) return null;
+---
+
+<script
+  is:inline
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-VB19GN2CX7"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function (...args) {
+    window.dataLayer.push(args);
+  };
+
+  window.gtag("js", new Date());
+
+  // Consent mode (antes de config)
+  window.gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+
+  // IMPORTANTE:
+  // desactivar page_view automático
+  window.gtag("config", "G-VB19GN2CX7", {
+    send_page_view: false,
+  });
+</script>
+
+<script is:inline>
+  const reportPageView = () => {
+    if (!window.gtag) return;
+    window.gtag("event", "page_view", {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+    });
+  };
+
+  document.addEventListener("astro:page-load", reportPageView);
+
+  window.addEventListener("scroll", () => {
+    const scrolled =
+      (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+
+    if (scrolled > 0.75) {
+      window.gtag("event", "scroll_75");
+    }
+  });
+</script>
