@@ -113,6 +113,7 @@ const Icon = IconsMap[project.data.type].Icon;
           </a>
         ) : (
           <a
+            target="_blank"
             href={new URL(project.data.link, Astro.url)}
             class={`inline-flex items-center gap-2 text-indigo-600 font-black hover:gap-3 transition-all group/link ${compact ? "text-xs" : "text-base"}`}
           >

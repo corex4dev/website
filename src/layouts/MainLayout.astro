@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@/components/layout/BaseHead.astro";
+import { ThemeManager } from "@/components/theme";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics.astro";
 import type { ImageMetadata } from "astro";
 import { ClientRouter } from "astro:transitions";
@@ -32,6 +33,9 @@ const {
       type={type}
       image={image}
     />
+
+    <ClientRouter />
+    <ThemeManager />
   </head>
   <body class="bg-slate-50 text-slate-900"
     ><slot />

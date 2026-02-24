@@ -4,6 +4,7 @@ import Logo from "@/assets/favicon.svg";
 import { Icon } from "astro-icon/components";
 import { Menu, X } from "@lucide/astro";
 import { Image } from "astro:assets";
+import { ThemeToggleButton } from "../theme";
 
 const navLinks = [
   { name: "Inicio", path: "/" },
@@ -44,7 +45,7 @@ const navLinks = [
               </HeaderLink>
             ))
           }
-          <div class="flex items-center space-x-4 ml-4">
+          <div class="flex items-center space-x-4">
             <a
               href="https://youtube.com/@CoreX4Dev"
               target="_blank"
@@ -61,11 +62,17 @@ const navLinks = [
             >
               <Icon name="fa7-brands:github" class="w-7 h-7" />
             </a>
+            <!-- <div class="text-slate-400">
+              <ThemeToggleButton />
+            </div> -->
           </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div class="md:hidden flex items-center">
+          <!-- <div class="me-2">
+            <ThemeToggleButton/>
+          </div> -->
           <button
             id="navToggle"
             aria-controls="navMenu"
