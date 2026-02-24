@@ -2,7 +2,9 @@
   "$schema": "https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json",
   "backend": {
     "name": "github",
-    "repo": "user/repo"
+    "repo": "corex4dev/website",
+    "branch": "master",
+    "base_url": "https://corex4dev-cms-auth.corex4dev.workers.dev/"
   },
   "media_folder": "public/uploads",
   "public_folder": "uploads",
