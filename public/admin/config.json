@@ -40,6 +40,41 @@
       ]
     },
     {
+      "name": "legal-page",
+      "label": "Legal Pages",
+      "label_singular": "Legal Page",
+      "description": "Legal pages including ***Privacy Policy***, ***Terms and conditions***, ***Cookies Policy***, etc",
+      "icon": "contract_edit",
+      "folder": "src/content/legal",
+      "create": true,
+      "editor": { "preview": false },
+      "identifier_field": "title",
+      "format": "frontmatter",
+      "extension": "md",
+      "limit": 15,
+      "fields": [
+        { "name": "title", "label": "Title", "widget": "string" },
+        {
+          "name": "subtitle",
+          "label": "Subtitle",
+          "widget": "string",
+          "required": false
+        },
+        {
+          "name": "short-description",
+          "label": "Short description (up to 160 characters)",
+          "widget": "text",
+          "maxlength": 160,
+          "hint": "This descripcion will be used for SEO purposes only"
+        },
+        {
+          "name": "body",
+          "label": "Content",
+          "widget": "markdown"
+        }
+      ]
+    },
+    {
       "name": "posts",
       "folder": "/src/content/blog",
       "label": "Posts",
