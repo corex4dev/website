@@ -26,6 +26,15 @@ const blog = defineCollection({
   }),
 });
 
+const legal = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/legal" }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+    "short-description": z.string(),
+  }),
+});
+
 const product = defineCollection({
   loader: glob({ pattern: "*.json", base: "./src/content/products" }),
   schema: z.object({
@@ -55,4 +64,4 @@ const video = defineCollection({
   }),
 });
 
-export const collections = { category, blog, product, video };
+export const collections = { category, blog, legal, product, video };

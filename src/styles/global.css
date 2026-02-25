@@ -1,69 +1,123 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-@theme {
-	--breakpoint-xs: 30rem;
-	--breakpoint-2xl: 100rem;
-	--breakpoint-3xl: 120rem;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
-	min-width: 350px;
+  min-width: 350px;
+}
+
+:root {
+  --primary: #1e3a8a;
+  --secondary: #2563eb;
+  --accent: #fbbf24;
+  /* Hovers, active, tags */
+  --background: #f9fafb;
+  --surface: #ffffff;
+  /* Cards */
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --divider: #e5e7eb;
+  --success: #10b981;
+  --error: #ef4444;
+
+  --navbar-bg: #0f1119;
+  --navbar-fg: #f9fafb;
+  --navbar-title: #93c5fd;
+}
+
+html[data-theme="dark"] {
+  --primary: #93c5fd;
+  --secondary: #3b82f6;
+  --accent: #facc15;
+  --background: #080c13;
+  --surface: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --divider: #374151;
+  --success: #34d399;
+  --error: #f87171;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-divider: var(--divider);
+  --color-success: var(--success);
+  --color-error: var(--error);
+
+  --color-navbar-bg: var(--navbar-bg);
+  --color-navbar-fg: var(--navbar-fg);
+  --color-navbar-title: var(--navbar-title);
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
 }
 
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
 }
 
 a.nav-link {
-	@apply text-slate-600 hover:text-indigo-600;
+  @apply text-slate-600 hover:text-indigo-600;
 }
 
 a.nav-link.active {
-	@apply text-indigo-600 border-b-2 border-indigo-600;
+  @apply text-indigo-600 border-b-2 border-indigo-600;
 }
 
 #navMenu {
-	max-height: 0;
-	display: block;
+  max-height: 0;
+  display: block;
 
-	&.open-menu {
-		overflow: hidden;
-		transition: max-height 300ms ease-in-out;
-		max-height: 600px;
-	}
+  &.open-menu {
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+    max-height: 600px;
+  }
 }
 
 #posts a {
-	animation: fade .25s ease;
+  animation: fade 0.25s ease;
 }
 
 #videos a {
-	animation: fade .25s ease;
+  animation: fade 0.25s ease;
 }
 
 @keyframes fade {
-	from {
-		opacity: 0;
-		transform: translateY(6px);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

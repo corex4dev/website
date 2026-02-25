@@ -2,7 +2,9 @@
   "$schema": "https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json",
   "backend": {
     "name": "github",
-    "repo": "user/repo"
+    "repo": "corex4dev/website",
+    "branch": "master",
+    "base_url": "https://corex4dev-cms-auth.corex4dev.workers.dev/"
   },
   "media_folder": "public/uploads",
   "public_folder": "uploads",
@@ -34,6 +36,41 @@
           "label": "Image",
           "widget": "image",
           "required": false
+        }
+      ]
+    },
+    {
+      "name": "legal-page",
+      "label": "Legal Pages",
+      "label_singular": "Legal Page",
+      "description": "Legal pages including ***Privacy Policy***, ***Terms and conditions***, ***Cookies Policy***, etc",
+      "icon": "contract_edit",
+      "folder": "src/content/legal",
+      "create": true,
+      "editor": { "preview": false },
+      "identifier_field": "title",
+      "format": "frontmatter",
+      "extension": "md",
+      "limit": 15,
+      "fields": [
+        { "name": "title", "label": "Title", "widget": "string" },
+        {
+          "name": "subtitle",
+          "label": "Subtitle",
+          "widget": "string",
+          "required": false
+        },
+        {
+          "name": "short-description",
+          "label": "Short description (up to 160 characters)",
+          "widget": "text",
+          "maxlength": 160,
+          "hint": "This descripcion will be used for SEO purposes only"
+        },
+        {
+          "name": "body",
+          "label": "Content",
+          "widget": "markdown"
         }
       ]
     },
