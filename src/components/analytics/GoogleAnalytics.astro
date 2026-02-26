@@ -1,8 +1,22 @@
 ---
-if (!import.meta.env.PROD) return null;
+// if (!import.meta.env.PROD) return null;
 ---
 
-<script
+<!-- Google Tag Manager -->
+<script is:inline>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-N88Z66CX");
+</script>
+
+<!-- <script
   is:inline
   async
   src="https://www.googletagmanager.com/gtag/js?id=G-VB19GN2CX7"></script>
@@ -29,14 +43,15 @@ if (!import.meta.env.PROD) return null;
     send_page_view: false,
   });
 </script>
-
+ -->
 <script is:inline>
   const reportPageView = () => {
-    if (!window.gtag) return;
-    window.gtag("event", "page_view", {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "pageview",
+      page_path: window.location.pathname,
       page_title: document.title,
       page_location: window.location.href,
-      page_path: window.location.pathname,
     });
   };
 

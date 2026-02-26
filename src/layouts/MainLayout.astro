@@ -14,7 +14,6 @@ interface Props {
   };
 }
 
-const gtag_id = import.meta.env.GA_ID;
 const {
   seoProps: { description, title, image, type },
 } = Astro.props;
@@ -37,8 +36,18 @@ const {
     <ClientRouter />
     <ThemeManager />
   </head>
-  <body class="bg-slate-50 text-slate-900"
-    ><slot />
+  <body class="bg-slate-50 text-slate-900">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-N88Z66CX"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+
+    <slot />
 
     <script is:inline>
       const addYear = () => {
