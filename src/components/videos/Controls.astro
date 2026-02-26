@@ -20,7 +20,7 @@ const categories = await getCollection("category");
     <input
       type="search"
       placeholder="Buscar por título de vídeo..."
-      class="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500 bg-white shadow-sm"
+      class="w-full pl-12 pr-4 py-4 rounded-2xl border focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm input-field"
       id="searchInput"
     />
   </div>
@@ -30,8 +30,8 @@ const categories = await getCollection("category");
       href={`/videos`}
       class={`px-6 py-3 rounded-xl whitespace-nowrap font-medium transition-all ${
         !selectedCategory
-          ? "bg-red-600 text-white shadow-lg shadow-red-100"
-          : "bg-white text-slate-600 border border-slate-200 hover:border-red-300"
+          ? "bg-red-600 text-white shadow-lg shadow-red-100 dark:shadow-red-900/50"
+          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"
       }`}
     >
       Todos
@@ -42,8 +42,8 @@ const categories = await getCollection("category");
           href={`/videos/${cat.id}`}
           class={`px-6 py-3 rounded-xl whitespace-nowrap font-medium transition-all ${
             selectedCategory === cat.id
-              ? "bg-red-600 text-white shadow-lg shadow-red-100"
-              : "bg-white text-slate-600 border border-slate-200 hover:border-red-300"
+              ? "bg-red-600 text-white shadow-lg shadow-red-100 dark:shadow-red-900/50"
+              : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"
           }`}
         >
           {cat.data.title}

@@ -32,7 +32,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
     <header class="mb-16">
       <h1
-        class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+        class="text-4xl lg:text-5xl font-extrabold  mb-6 tracking-tight"
       >
         Blog de Desarrollo
       </h1>
@@ -58,14 +58,14 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
 
       <div
         id="emptyStatePosts"
-        class="col-span-full text-center py-20 px-8 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 hidden"
+        class="col-span-full text-center py-20 px-8 bg-slate-50 dark:bg-transparent rounded-[3rem] border-2 border-dashed border-slate-200 hidden dark:border-slate-800"
       >
         <p class="text-slate-500 text-lg">
           No encontramos artículos que coincidan con tu búsqueda.
         </p>
         <button
           id="clearEmptySearch"
-          class="mt-4 text-red-600 font-bold hover:underline transition-all"
+          class="mt-4 text-indigo-600 font-bold hover:underline transition-all"
           >Ver todos los posts</button
         >
       </div>

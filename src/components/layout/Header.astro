@@ -16,7 +16,9 @@ const navLinks = [
 ---
 
 <header class="sticky top-0 z-1000">
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200">
+  <nav
+    class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center">
@@ -27,7 +29,8 @@ const navLinks = [
               loading="eager"
               class="w-8 h-8 group-hover:rotate-12 transition-transform"
             />
-            <span class="font-bold text-xl tracking-tight text-slate-900"
+            <span
+              class="font-bold text-xl tracking-tight  dark:text-white"
               >CoreX4Dev</span
             >
           </a>
@@ -57,27 +60,27 @@ const navLinks = [
             <a
               href="https://github.com/corex4dev"
               target="_blank"
-              class="text-slate-400 hover:text-slate-900 transition-colors"
+              class="text-slate-400 hover: dark:hover:text-white transition-colors"
               aria-label="Enlace a Github"
             >
               <Icon name="fa7-brands:github" class="w-7 h-7" />
             </a>
-            <!-- <div class="text-slate-400">
+            <div class="text-slate-400">
               <ThemeToggleButton />
-            </div> -->
+            </div>
           </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div class="md:hidden flex items-center">
-          <!-- <div class="me-2">
-            <ThemeToggleButton/>
-          </div> -->
+          <div class="me-2">
+            <ThemeToggleButton />
+          </div>
           <button
             id="navToggle"
             aria-controls="navMenu"
             aria-expanded="false"
-            class="text-slate-600 hover:text-indigo-600 transition-colors"
+            class="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
           >
             <!-- Hamburger -->
             <span id="iconOpen">
@@ -96,7 +99,7 @@ const navLinks = [
     {/* Mobile Menu */}
     <div
       id="navMenu"
-      class="md:hidden border-b border-slate-200 hidden transition-all duration-200 ease-out overflow-hidden w-full"
+      class="md:hidden border-b border-slate-200 dark:border-slate-800 hidden transition-all duration-200 ease-out overflow-hidden w-full"
     >
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         {

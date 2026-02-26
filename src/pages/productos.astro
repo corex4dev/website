@@ -25,16 +25,16 @@ const otherProjects = projects.filter((p) => !p.data.featured);
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-20 text-center">
       <div
-        class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-sm font-bold mb-6 border border-indigo-100"
+        class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 px-4 py-2 rounded-full text-sm font-bold mb-6 border border-indigo-100 dark:border-indigo-800"
       >
         <Package size={16} /> Portfolio & Labs
       </div>
       <h1
-        class="text-4xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight"
+        class="text-4xl lg:text-6xl font-black mb-6 tracking-tight"
       >
         Productos y Proyectos
       </h1>
-      <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
         Una colección de herramientas, bibliotecas y recursos diseñados para
         elevar el estándar del desarrollo web moderno.
       </p>
@@ -45,8 +45,8 @@ const otherProjects = projects.filter((p) => !p.data.featured);
       featuredProjects.length > 0 && (
         <section class="mb-24">
           <div class="flex items-center gap-4 mb-10">
-            <h2 class="text-3xl font-black text-slate-900">Destacados</h2>
-            <div class="h-px flex-1 bg-slate-100" />
+            <h2 class="text-3xl font-black">Destacados</h2>
+            <div class="h-px flex-1 bg-slate-200/80 dark:bg-slate-800/80" />
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             {featuredProjects.map((project) => (
@@ -60,8 +60,8 @@ const otherProjects = projects.filter((p) => !p.data.featured);
     {/* All Projects Section */}
     <section>
       <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-3xl font-black text-slate-900">Todos los Proyectos</h2>
-        <div class="h-px flex-1 bg-slate-100"></div>
+        <h2 class="text-3xl font-black ">Todos los Proyectos</h2>
+        <div class="h-px flex-1 bg-slate-200/80 dark:bg-slate-800/80"></div>
       </div>
       {
         otherProjects.length > 0 ? (
@@ -71,11 +71,11 @@ const otherProjects = projects.filter((p) => !p.data.featured);
             ))}
           </div>
         ) : (
-          <div class="bg-slate-50 rounded-4xl p-12 text-center border-2 border-dashed border-slate-200">
-            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm text-slate-300">
+          <div class="bg-slate-50 dark:bg-transparent rounded-4xl p-12 text-center border-2 border-dashed border-slate-200 dark:border-slate-800">
+            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm text-slate-300">
               <Package size={32} />
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">
+            <h3 class="text-xl font-bold mb-2">
               Próximamente más proyectos
             </h3>
             <p class="text-slate-500 max-w-md mx-auto">

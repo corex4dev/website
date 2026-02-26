@@ -44,7 +44,7 @@ const formattedPrice = Intl.NumberFormat("es-MX", {
 const breadcrumbSchema = getBreadcrumbSchema([
   { name: "Inicio", item: "/" },
   { name: "Productos", item: "/productos" },
-  { name: "CMS Decision Pack", item: "/cms-pack" },
+  { name: "CMS Decision Pack", item: "/cms-decision-pack" },
 ]);
 
 const checkoutLink =
@@ -63,7 +63,7 @@ const checkoutLink =
   >
     {/* Hero Section */}
     <section
-      class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 border-b border-slate-100 overflow-hidden"
+      class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 border-b border-slate-100 dark:border-slate-800 overflow-hidden"
     >
       <div
         class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 opacity-15 pointer-events-none"
@@ -81,14 +81,14 @@ const checkoutLink =
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
           <div
-            class="inline-flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-full border border-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-widest"
+            class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950 px-4 py-2 rounded-full border border-indigo-100 dark:border-indigo-900 text-indigo-700 dark:text-indigo-200 font-bold text-xs mb-8 uppercase tracking-widest"
           >
             <Sparkles size={14} />
             CoreX4Dev Edition
           </div>
 
           <h1
-            class="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-8"
+            class="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-8"
           >
             Deja de elegir CMS por costumbre.<br />
             <span class="text-indigo-600 text-[90%]"
@@ -97,7 +97,7 @@ const checkoutLink =
           </h1>
 
           <p
-            class="text-lg lg:text-xl text-slate-600 leading-relaxed mb-12 max-w-2xl mx-auto font-medium"
+            class="text-lg lg:text-xl text-slate-600 dark:text-slate-500 leading-relaxed mb-12 max-w-2xl mx-auto font-medium"
           >
             Un sistema estructurado para convertir decisiones técnicas en
             argumentos sólidos que el cliente respeta. Justificable, defendible
@@ -106,7 +106,7 @@ const checkoutLink =
 
           <div class="flex flex-col items-center">
             <a
-              class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 hover:-translate-y-1 group"
+              class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 dark:shadow-indigo-950 hover:-translate-y-1 group"
               href={checkoutLink}
               data-polar-checkout
               data-polar-checkout-theme="light"
@@ -190,10 +190,12 @@ const checkoutLink =
     {/* The Solution / What it includes */}
     <section class="py-32">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24">
-        <h2 class="text-4xl lg:text-6xl font-black text-slate-900 mb-8">
+        <h2 class="text-4xl lg:text-6xl font-black mb-8">
           Qué es el CMS Decision Pack
         </h2>
-        <p class="max-w-3xl mx-auto text-xl text-slate-600 leading-relaxed">
+        <p
+          class="max-w-3xl mx-auto text-xl text-slate-600 dark:text-slate-500 leading-relaxed"
+        >
           Es un marco profesional para evaluar CMS con precisión. Integra
           análisis, criterios y estructura en un proceso claro que reduce la
           complejidad y te permite comunicar decisiones con autoridad.
@@ -203,10 +205,10 @@ const checkoutLink =
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
-            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+            class="card p-10 rounded-[2.5rem] border shadow-sm hover:shadow-xl transition-all"
           >
             <div
-              class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8"
+              class="w-14 h-14 bg-indigo-50 text-indigo-600 dark:bg-indigo-800/70 dark:text-indigo-200 rounded-2xl flex items-center justify-center mb-8"
             >
               <ShieldCheck size={32} />
             </div>
@@ -217,10 +219,10 @@ const checkoutLink =
             </p>
           </div>
           <div
-            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+            class="card p-10 rounded-[2.5rem] border shadow-sm hover:shadow-xl transition-all"
           >
             <div
-              class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8"
+              class="w-14 h-14 bg-blue-50 text-blue-600 dark:bg-blue-800/70 dark:text-blue-200 rounded-2xl flex items-center justify-center mb-8"
             >
               <Zap size={32} />
             </div>
@@ -231,10 +233,10 @@ const checkoutLink =
             </p>
           </div>
           <div
-            class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+            class="card p-10 rounded-[2.5rem] border shadow-sm hover:shadow-xl transition-all"
           >
             <div
-              class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8"
+              class="w-14 h-14 bg-emerald-50 text-emerald-600 dark:bg-emerald-800/70 dark:text-emerald-200 rounded-2xl flex items-center justify-center mb-8"
             >
               <FileText size={32} />
             </div>
@@ -258,7 +260,6 @@ const checkoutLink =
           class="bg-white text-indigo-600 hover:bg-slate-50 shadow-indigo-900/20 inline-flex items-center justify-center gap-3 px-10 rounded-2xl font-black transition-all shadow-xl hover:-translate-y-1 group text-lg py-5"
           href={checkoutLink}
           data-polar-checkout
-          data-polar-checkout-theme="light"
         >
           Obtener el Pack Ahora — {formattedPrice}
           <ArrowRight
@@ -270,11 +271,11 @@ const checkoutLink =
     </section>
 
     {/* How it works */}
-    <section class="py-32 border-y border-slate-100">
+    <section class="py-32 border-y border-slate-100 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row gap-20">
           <div class="lg:w-1/3">
-            <h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">
+            <h2 class="text-4xl font-black mb-6 tracking-tight">
               Cómo funciona el sistema
             </h2>
             <p class="text-lg text-slate-500 mb-8">
@@ -327,14 +328,14 @@ const checkoutLink =
                   d: "Muestra una decisión clara, argumentada y defendible que el cliente respetará.",
                 },
               ].map((step, i) => (
-                <div class="p-10 bg-white rounded-3xl border border-slate-100 shadow-sm relative group hover:border-indigo-200 transition-all">
-                  <div class="text-5xl font-black text-indigo-50 absolute top-6 right-8 group-hover:text-indigo-100 transition-colors select-none">
+                <div class="p-10 card rounded-3xl border shadow-sm relative group hover:border-indigo-200 transition-all">
+                  <div class="text-5xl font-black text-indigo-50 dark:text-indigo-950/70 absolute top-6 right-8 group-hover:text-indigo-100 dark:group-hover:text-indigo-900 transition-colors select-none">
                     {step.n}
                   </div>
-                  <h3 class="text-2xl font-black text-slate-900 mb-4 relative z-10">
+                  <h3 class="text-2xl font-black  mb-4 relative z-10">
                     {step.t}
                   </h3>
-                  <p class="text-slate-500 leading-relaxed relative z-10">
+                  <p class="text-slate-500 dark:text-slate-400 leading-relaxed relative z-10">
                     {step.d}
                   </p>
                 </div>
@@ -406,7 +407,7 @@ const checkoutLink =
           >
             Acceso Inmediato
           </span>
-          <h2 class="text-4xl lg:text-6xl font-black text-slate-900 mb-6">
+          <h2 class="text-4xl lg:text-6xl font-black mb-6">
             Empieza hoy mismo
           </h2>
           <p class="text-xl text-slate-500 font-medium">
@@ -415,19 +416,20 @@ const checkoutLink =
         </div>
 
         <div
-          class="bg-slate-50 rounded-[4rem] p-12 lg:py-16 lg:px-20 border border-slate-100 shadow-2xl relative"
+          class="card rounded-[4rem] p-12 lg:py-16 lg:px-20 border shadow-2xl relative"
         >
           <div
-            class="absolute top-0 right-10 -translate-y-1/2 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 rotate-3 hidden lg:block"
+            class="absolute top-0 right-10 -translate-y-1/2 bg-white dark:bg-indigo-800 p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 rotate-3 hidden lg:block"
           >
-            <p class="text-indigo-600 font-black text-xl tracking-tighter">
+            <p
+              class="text-indigo-600 dark:text-slate-100 font-black text-xl tracking-tighter"
+            >
               PRECIO FINAL
             </p>
           </div>
 
           <div class="mb-12">
-            <span class="text-7xl lg:text-8xl font-black text-slate-900"
-              >{formattedPrice}</span
+            <span class="text-7xl lg:text-8xl font-black">{formattedPrice}</span
             >
             <p class="text-slate-400 font-bold mt-4 uppercase tracking-[0.3em]">
               Pago único • Acceso de por vida
@@ -446,7 +448,7 @@ const checkoutLink =
                   <div class="bg-emerald-500 text-white rounded-full p-1">
                     <CircleCheck size={16} />
                   </div>
-                  <span class="text-lg text-slate-700 font-medium">
+                  <span class="text-lg text-slate-700 dark:text-slate-500 font-medium">
                     {benefit}
                   </span>
                 </div>
@@ -455,7 +457,7 @@ const checkoutLink =
           </div>
 
           <a
-            class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 rounded-2xl font-black hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 hover:-translate-y-1 group w-full text-xl py-6"
+            class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 rounded-2xl font-black hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 dark:shadow-indigo-950 hover:-translate-y-1 group w-full text-xl py-6"
             href={checkoutLink}
             data-polar-checkout
             data-polar-checkout-theme="light"
@@ -468,15 +470,15 @@ const checkoutLink =
           </a>
 
           <div
-            class="mt-10 pt-10 border-t border-slate-200 flex flex-col items-center gap-6"
+            class="mt-10 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col items-center gap-6"
           >
-            <p class="text-slate-400 text-sm font-medium">
+            <p class="text-slate-400 dark:text-slate-600 text-sm font-medium">
               Garantía de satisfacción CoreX4Dev • Soporte prioritario vía Email
             </p>
             <div class="flex gap-8">
-              <ShieldCheck class="text-slate-300" size={32} />
-              <Zap class="text-slate-300" size={32} />
-              <TrendingUp class="text-slate-300" size={32} />
+              <ShieldCheck class="text-slate-300 dark:text-slate-600" size={32} />
+              <Zap class="text-slate-300 dark:text-slate-600" size={32} />
+              <TrendingUp class="text-slate-300 dark:text-slate-600" size={32} />
             </div>
           </div>
         </div>
@@ -485,12 +487,10 @@ const checkoutLink =
 
     {/* Simple Footer for Landing */}
     <footer
-      class="py-10 text-center text-slate-400 text-sm border-t border-slate-100 bg-slate-50"
+      class="py-10 text-center text-slate-400 dark:text-slate-600 text-sm border-t border-slate-100 dark:border-slate-800"
     >
       <div class="max-w-7xl mx-auto px-4">
-        <p class="font-bold text-slate-900 mb-2">
-          CoreX4Dev — Daniel Gonzalez Cuetara
-        </p>
+        <p class="font-bold mb-2">CoreX4Dev — Daniel Gonzalez Cuetara</p>
         <p>© <span id="year"></span> Todos los derechos reservados.</p>
       </div>
     </footer>
@@ -501,6 +501,18 @@ const checkoutLink =
     src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.1/dist/embed.global.js"
     defer
     data-auto-init></script>
+
+  <script is:inline>
+    document.addEventListener("astro:page-load", () => {
+      const links = document.querySelectorAll("a[data-polar-checkout]");
+
+      const theme =
+        window.theme.getTheme() === "auto"
+          ? window.theme.getSystemTheme()
+          : window.theme.getTheme();
+      links.forEach((l) => l.setAttribute("data-polar-checkout-theme", theme));
+    });
+  </script>
 
   <JsonLd schema={getProductSchema(productData)} />
   <JsonLd schema={breadcrumbSchema} />

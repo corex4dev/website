@@ -16,10 +16,10 @@ const Icon = IconsMap[project.data.type].Icon;
 
 <div
   transition:name={`project_${project.id}`}
-  class={`group relative bg-white rounded-[2.5rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl hover:border-indigo-100 transition-all flex flex-col h-full ${compact ? "shadow-sm" : "shadow-md"}`}
+  class={`group relative card rounded-[2.5rem] border overflow-hidden shadow-sm hover:shadow-2xl hover:border-indigo-100 dark:hover:border-indigo-900 transition-all flex flex-col h-full ${compact ? "shadow-sm" : "shadow-md"}`}
 >
   <div
-    class={`relative overflow-hidden bg-slate-50 ${compact ? "h-40" : "h-56 lg:h-64"}`}
+    class={`relative overflow-hidden bg-slate-50 dark:bg-slate-900 ${compact ? "h-40" : "h-56 lg:h-64"}`}
   >
     {
       project.data.thumbnail ? (
@@ -32,10 +32,10 @@ const Icon = IconsMap[project.data.type].Icon;
             class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
             referrerpolicy="no-referrer"
           />
-          <div class="absolute inset-0 bg-linear-30 from-black/30 via-black/5 to-black/15" />
+          <div class="absolute inset-0 bg-linear-30 from-black/30 via-black/5 to-black/15 dark:from-slate-500/30 dark:via-slate-500/5 dark:to-slate-500/15" />
         </>
       ) : (
-        <div class="absolute inset-0 bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center">
+        <div class="absolute inset-0 bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
           <div
             class="w-full h-full opacity-15 absolute top-0 left-0 z-0"
             style={{
@@ -45,7 +45,7 @@ const Icon = IconsMap[project.data.type].Icon;
           />
           <Icon
             size={compact ? 64 : 80}
-            class="text-slate-200 group-hover:text-indigo-100 duration-500 z-1 group-hover:scale-130 transition"
+            class="text-slate-200 dark:text-slate-700 group-hover:text-indigo-100 dark:group-hover:text-indigo-700 duration-500 z-1 group-hover:scale-130 transition"
           />
         </div>
       )
@@ -54,7 +54,7 @@ const Icon = IconsMap[project.data.type].Icon;
     {/* Overlay Metadata */}
     <div class="absolute inset-0 p-6 lg:p-8 flex items-start justify-between">
       <div
-        class={`bg-white/90 backdrop-blur-md rounded-2xl shadow-lg text-indigo-600 group-hover:scale-110 transition-transform duration-500 ${compact ? "p-2" : "p-3"}`}
+        class={`bg-white/90 dark:bg-slate-700/40 backdrop-blur-md rounded-2xl shadow-lg text-indigo-600 group-hover:scale-110 transition-transform duration-500 ${compact ? "p-2" : "p-3"}`}
       >
         <Icon size={compact ? 24 : 30} />
       </div>
@@ -74,13 +74,13 @@ const Icon = IconsMap[project.data.type].Icon;
 
   <div class={`${compact ? "p-6" : "p-8 lg:p-10"} flex flex-col flex-1`}>
     <h3
-      class={`${compact ? "text-lg" : "text-2xl lg:text-3xl"} font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors line-clamp-1`}
+      class={`${compact ? "text-lg" : "text-2xl lg:text-3xl"} font-black  mb-2 group-hover:text-indigo-600 transition-colors line-clamp-1`}
     >
       {project.data.title}
     </h3>
 
     <div
-      class={`text-slate-500 ${compact ? "text-sm" : "text-lg"} leading-relaxed mb-4 flex-1 line-clamp-3`}
+      class={`text-slate-500 dark:text-slate-400 ${compact ? "text-sm" : "text-lg"} leading-relaxed mb-4 flex-1 line-clamp-3`}
       title={project.data.description}
     >
       <Markdown of={project.data.description} />
@@ -89,7 +89,7 @@ const Icon = IconsMap[project.data.type].Icon;
     <div class="flex flex-wrap gap-2 mb-8">
       {
         project.data.tech?.map((t) => (
-          <span class="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-100">
+          <span class="text-[10px] font-bold text-slate-400 dark:text-slate-400 dark:bg-slate-800 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-100 dark:border-slate-700">
             {t}
           </span>
         ))

@@ -28,11 +28,13 @@ const breadcrumbSchema = getBreadcrumbSchema([
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
     <header class="mb-10">
       <h1
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight"
       >
         Galería de Vídeos
       </h1>
-      <p class="text-lg sm:text-xl text-slate-600 max-w-3xl">
+      <p
+        class="text-lg sm:text-xl text-slate-600 dark:text-slate-500 max-w-3xl"
+      >
         Aprende desarrollo web paso a paso con los tutoriales del canal <span
           class="text-red-600 font-semibold">CoreX4Dev</span
         >.
@@ -42,7 +44,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
     <Controls selectedCategory={category} />
 
     {/* Videos Count info */}
-    <div class="mb-8 text-sm text-slate-500 font-medium">
+    <div class="mb-8 text-sm text-slate-500 dark:text-slate-400 font-medium">
       <div>
         Mostrando <span id="filteredVideosNumber"></span> vídeos de{" "}
         {videos.length}
@@ -58,7 +60,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
 
       <div
         id="emptyStateVideos"
-        class="col-span-full text-center py-20 px-8 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 hidden"
+        class="col-span-full text-center py-20 px-8 bg-slate-50 dark:bg-transparent rounded-[3rem] border-2 border-dashed border-slate-200 hidden dark:border-slate-800"
       >
         <p class="text-slate-500 text-lg">
           No encontramos vídeos que coincidan con tu búsqueda.
@@ -74,7 +76,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
     <CTA />
   </div>
 
-  <script is:inline src="/js/videos-page.js"/>
+  <script is:inline src="/js/videos-page.js"></script>
 
   <JsonLd schema={breadcrumbSchema} />
 </WebsiteLayout>
