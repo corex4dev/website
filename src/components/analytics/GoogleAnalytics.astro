@@ -16,34 +16,6 @@ if (!import.meta.env.PROD) return null;
   })(window, document, "script", "dataLayer", "GTM-N88Z66CX");
 </script>
 
-<!-- <script
-  is:inline
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-VB19GN2CX7"></script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function (...args) {
-    window.dataLayer.push(args);
-  };
-
-  window.gtag("js", new Date());
-
-  // Consent mode (antes de config)
-  window.gtag("consent", "default", {
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    analytics_storage: "denied",
-  });
-
-  // IMPORTANTE:
-  // desactivar page_view automático
-  window.gtag("config", "G-VB19GN2CX7", {
-    send_page_view: false,
-  });
-</script>
- -->
 <script is:inline>
   const reportPageView = () => {
     window.dataLayer = window.dataLayer || [];
