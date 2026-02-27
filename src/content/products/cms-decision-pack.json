@@ -2,15 +2,12 @@
   "title": "CMS Decision Pack",
   "description": "Un sistema estructurado para freelancers y agencias que necesitan justificar decisiones técnicas de CMS con rigor técnico y autoridad.",
   "type": "product",
-  "thumbnail": "",
+  "thumbnail": "/uploads/cms-decision-pack-featured-min-no-bg.png",
+  "seoImage": "/uploads/cms-decision-pack-featured-min.png",
   "link": "/cms-decision-pack",
   "isExternal": false,
   "price": 39.99,
-  "tech": [
-    "CMS",
-    "Framework",
-    "Estrategia"
-  ],
+  "tech": ["CMS", "Framework", "Estrategia"],
   "featured": true,
   "listOrder": 1
 }

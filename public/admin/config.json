@@ -160,6 +160,12 @@
           "widget": "image",
           "required": false
         },
+        {
+          "name": "seoImage",
+          "label": "Image for SEO",
+          "widget": "image",
+          "required": true
+        },
         { "name": "link", "required": true },
         {
           "name": "isExternal",

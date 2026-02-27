@@ -42,6 +42,7 @@ const product = defineCollection({
     description: z.string(),
     type: z.enum(["product", "package", "project", "open-source"]),
     thumbnail: z.string().optional(),
+    seoImage: z.string(),
     link: z.string(),
     isExternal: z.boolean(),
     featured: z.boolean(),
