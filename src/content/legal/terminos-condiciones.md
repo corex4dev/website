@@ -1,10 +1,9 @@
 ---
 title: Términos y Condiciones
 subtitle: ''
+lastUpdated: 2026-02-27
 short-description: Términos y Condiciones del sitio CoreX4Dev
 ---
-
-**_Última actualización_:** 22 de febrero de 2026
 
 ## 1. Aceptación de los Términos
 

@@ -90,3 +90,14 @@ a.nav-link.active {
     transform: translateY(0);
   }
 }
+
+.prose :not(pre) code {
+  @apply font-mono bg-slate-200 dark:bg-slate-800 font-normal py-0.5 px-1 transition-colors;
+
+  &::after {
+    content: "";
+  }
+  &::before {
+    content: "";
+  }
+}
