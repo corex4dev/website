@@ -4,6 +4,7 @@ import { ThemeManager } from "@/components/theme";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics.astro";
 import type { ImageMetadata } from "astro";
 import { ClientRouter } from "astro:transitions";
+import CookiesManagerButton from "@/components/analytics/CookiesManagerButton.astro";
 
 interface Props {
   seoProps: {
@@ -48,6 +49,8 @@ const {
     <!-- End Google Tag Manager (noscript) -->
 
     <slot />
+
+    <CookiesManagerButton />
 
     <script is:inline>
       const addYear = () => {

@@ -1,0 +1,22 @@
+---
+import { Cookie } from "@lucide/astro";
+---
+
+<button
+  id="cookiesButton"
+  class="fixed bottom-8 left-8 z-2147483000 w-12 h-12 bg-indigo-500 text-white grid place-items-center rounded-full"
+>
+  <Cookie size={28} />
+</button>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const button = document.getElementById("cookiesButton");
+    button.style.display = window.__ENZUZO_STARTED__ ? "grid" : "none";
+    if (window.__ENZUZO_STARTED__ && window.__enzuzoApi) {
+      button.addEventListener("click", (e) => {
+        window.__enzuzoApi.prefCenter.show();
+      });
+    }
+  });
+</script>

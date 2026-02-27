@@ -56,13 +56,4 @@ if (!import.meta.env.PROD) return null;
   };
 
   document.addEventListener("astro:page-load", reportPageView);
-
-  window.addEventListener("scroll", () => {
-    const scrolled =
-      (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-
-    if (scrolled > 0.75) {
-      window.gtag("event", "scroll_75");
-    }
-  });
 </script>
