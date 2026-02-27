@@ -11,25 +11,25 @@ const areas = [
     icon: Layout,
     title: "Headless CMS",
     desc: "Payload CMS, Strapi y Sanity. Arquitecturas desacopladas y escalables.",
-    color: "bg-blue-50 text-blue-600",
+    color: "bg-blue-50 dark:bg-blue-800/70 text-blue-600 dark:text-blue-100",
   },
   {
     icon: CreditCard,
     title: "Pagos",
     desc: "Stripe, PayPal, Wise y Polar. Marketplaces y SaaS.",
-    color: "bg-emerald-50 text-emerald-600",
+    color: "bg-emerald-50 dark:bg-emerald-800/70 text-emerald-600 dark:text-emerald-100",
   },
   {
     icon: ShieldCheck,
     title: "Seguridad",
     desc: "Better Auth, Clerk y OAuth. Autenticación moderna y segura.",
-    color: "bg-purple-50 text-purple-600",
+    color: "bg-purple-50 dark:bg-purple-800/70 text-purple-600 dark:text-purple-100",
   },
   {
     icon: Code,
     title: "Full-Stack",
     desc: "Next.js, Drizzle y Tailwind. Stacks para desarrolladores.",
-    color: "bg-indigo-50 text-indigo-600",
+    color: "bg-indigo-50 dark:bg-indigo-800/70 text-indigo-600 dark:text-indigo-100",
   },
 ];
 ---
@@ -37,7 +37,7 @@ const areas = [
 {/* Expertise Cards */}
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="mb-16 text-center lg:text-left">
-    <h2 class="text-4xl font-black text-slate-900 mb-4">
+    <h2 class="text-4xl font-black  mb-4">
       Especialización Técnica
     </h2>
     <p class="text-lg text-slate-500 max-w-2xl">
@@ -48,13 +48,13 @@ const areas = [
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
     {
       areas.map((item, i) => (
-        <div class="p-10 bg-white border border-slate-100 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all group">
+        <div class="p-10 card border rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all group">
           <div
             class={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}
           >
             <item.icon size={28} />
           </div>
-          <h3 class="text-2xl font-black mb-4 text-slate-900">{item.title}</h3>
+          <h3 class="text-2xl font-black mb-4 ">{item.title}</h3>
           <p class="text-slate-500 leading-relaxed text-lg">{item.desc}</p>
         </div>
       ))

@@ -16,9 +16,9 @@ const { video } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   id={`video_${video.id}`}
-  class="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col h-full shadow-sm animate-in fade-in duration-500"
+  class="group p-[unset] card rounded-3xl border overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col h-full shadow-sm animate-in fade-in duration-500"
 >
-  <div class="relative aspect-video overflow-hidden bg-slate-100">
+  <div class="relative aspect-video overflow-hidden">
     <Image
       width={1920}
       height={1080}
@@ -38,7 +38,7 @@ const { video } = Astro.props;
     </div>
     <div class="absolute top-4 left-4">
       <span
-        class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-red-600 shadow-sm"
+        class="bg-white/90 dark:bg-white/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-red-600 shadow-sm"
       >
         {video.data.categories}
       </span>
@@ -47,7 +47,7 @@ const { video } = Astro.props;
   <div class="p-6 flex flex-col flex-1">
     <h3
       id="title"
-      class="text-lg font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors leading-tight line-clamp-2"
+      class="text-lg font-bold  mb-3 group-hover:text-red-600 leading-tight line-clamp-2"
     >
       {video.data.title}
     </h3>

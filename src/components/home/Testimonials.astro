@@ -21,10 +21,10 @@ const testimonials = [
 ---
 
 {/* Testimonials Section */}
-<section class="bg-slate-50 py-18">
+<section class="py-18">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-20">
-      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 mb-6">
+      <h2 class="text-4xl lg:text-5xl font-black mb-6">
         Lo que dicen en la comunidad
       </h2>
       <p class="text-xl text-slate-500">
@@ -34,13 +34,13 @@ const testimonials = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         testimonials.map((t, i) => (
-          <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative">
+          <div class="card p-10 rounded-[2.5rem] border shadow-sm relative">
             <div class="flex gap-1 text-amber-400 mb-6">
               {[...Array(5)].map((_, i) => (
                 <Star size={18} fill="currentColor" />
               ))}
             </div>
-            <p class="text-slate-600 text-lg italic mb-8 leading-relaxed">
+            <p class="text-slate-600 dark:text-slate-400 text-lg italic mb-8 leading-relaxed">
               "{t.text}"
             </p>
             <div class="flex items-center gap-4">
@@ -48,7 +48,7 @@ const testimonials = [
                 {t.name[0]}
               </div>
               <div>
-                <p class="font-black text-slate-900">{t.name}</p>
+                <p class="font-black ">{t.name}</p>
                 <p class="text-sm text-slate-400 font-bold uppercase tracking-tighter">
                   {t.role}
                 </p>

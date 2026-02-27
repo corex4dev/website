@@ -9,60 +9,29 @@ html {
 }
 
 body {
+  @apply bg-slate-50 text-slate-900 transition-colors duration-300 antialiased dark:bg-slate-950 dark:text-slate-100;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   min-width: 350px;
 }
 
-:root {
-  --primary: #1e3a8a;
-  --secondary: #2563eb;
-  --accent: #fbbf24;
-  /* Hovers, active, tags */
-  --background: #f9fafb;
-  --surface: #ffffff;
-  /* Cards */
-  --text-primary: #111827;
-  --text-secondary: #374151;
-  --divider: #e5e7eb;
-  --success: #10b981;
-  --error: #ef4444;
+@layer components {
+  /* Refined interactive components for both modes */
+  .btn-primary {
+    @apply px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl transition-all hover:bg-indigo-700 active:scale-95 shadow-lg shadow-indigo-600/20 dark:shadow-indigo-900/40;
+  }
 
-  --navbar-bg: #0f1119;
-  --navbar-fg: #f9fafb;
-  --navbar-title: #93c5fd;
+  .input-field {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all outline-none dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100 dark:focus:border-indigo-400;
+  }
+
+  .card {
+    @apply bg-white border border-slate-200 rounded-4xl p-8 shadow-sm transition-all dark:bg-slate-900 dark:border-slate-800 dark:shadow-none;
+  }
 }
 
-html[data-theme="dark"] {
-  --primary: #93c5fd;
-  --secondary: #3b82f6;
-  --accent: #facc15;
-  --background: #080c13;
-  --surface: #1f2937;
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --divider: #374151;
-  --success: #34d399;
-  --error: #f87171;
-}
-
-@theme inline {
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-divider: var(--divider);
-  --color-success: var(--success);
-  --color-error: var(--error);
-
-  --color-navbar-bg: var(--navbar-bg);
-  --color-navbar-fg: var(--navbar-fg);
-  --color-navbar-title: var(--navbar-title);
-
-  --breakpoint-xs: 30rem;
-  --breakpoint-2xl: 100rem;
-  --breakpoint-3xl: 120rem;
+img,
+video {
+  @apply dark:opacity-90 dark:brightness-90 dark:contrast-110;
 }
 
 .sr-only {
@@ -84,11 +53,11 @@ html[data-theme="dark"] {
 }
 
 a.nav-link {
-  @apply text-slate-600 hover:text-indigo-600;
+  @apply text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400;
 }
 
 a.nav-link.active {
-  @apply text-indigo-600 border-b-2 border-indigo-600;
+  @apply text-indigo-600 border-b-2 border-indigo-600 dark:text-indigo-400 dark:border-indigo-400;
 }
 
 #navMenu {
