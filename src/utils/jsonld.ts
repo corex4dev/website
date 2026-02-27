@@ -86,19 +86,39 @@ export const getBlogPostSchema = (post: CollectionEntry<"blog">) => ({
   inLanguage: "es-ES",
 });
 
-export const getProductSchema = (product: CollectionEntry<"product">) => ({
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "@id": `${SITE_URL}/productos/${product.id}`,
-  name: product.data.title,
-  description: product.data.description,
-  image: product.data.thumbnail,
-  brand: { "@id": `${SITE_URL}/#organization` },
-  offers: {
-    "@type": "Offer",
-    url: `${SITE_URL}/productos`,
-    priceCurrency: "USD",
-    price: product.data.price.toFixed(2) || "0",
-    availability: "https://schema.org/InStock",
-  },
-});
+export const getProductSchema = (product: CollectionEntry<"product">) => {
+  const image = product.data.seoImage.startsWith("http")
+    ? product.data.seoImage
+    : `${SITE_URL}${product.data.seoImage}`;
+
+  const priceValidUntil = new Date();
+  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 3);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${SITE_URL}/productos/${product.id}`,
+    name: product.data.title,
+    description: product.data.description,
+    image,
+    brand: { "@id": `${SITE_URL}/#organization`, name: "CoreX4Dev" },
+    category: "Digital Product",
+    offers: {
+      "@type": "Offer",
+      url: `${SITE_URL}/productos`,
+      priceCurrency: "USD",
+      price: product.data.price.toFixed(2) || "0",
+      availability: "https://schema.org/InStock",
+      priceValidUntil: priceValidUntil.toISOString(),
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      },
+      additionalProperty: {
+        "@type": "PropertyValue",
+        name: "deliveryFormat",
+        value: "Digital download",
+      },
+    },
+  };
+};

@@ -61,6 +61,13 @@
           "required": false
         },
         {
+          "name": "lastUpdated",
+          "widget": "datetime",
+          "required": true,
+          "time_format": false,
+          "default": "{{now}}"
+        },
+        {
           "name": "short-description",
           "label": "Short description (up to 160 characters)",
           "widget": "text",
@@ -159,6 +166,12 @@
           "label": "Thumbnail",
           "widget": "image",
           "required": false
+        },
+        {
+          "name": "seoImage",
+          "label": "Image for SEO",
+          "widget": "image",
+          "required": true
         },
         { "name": "link", "required": true },
         {

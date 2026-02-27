@@ -31,6 +31,7 @@ const legal = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
+    lastUpdated: z.coerce.date(),
     "short-description": z.string(),
   }),
 });
@@ -42,6 +43,7 @@ const product = defineCollection({
     description: z.string(),
     type: z.enum(["product", "package", "project", "open-source"]),
     thumbnail: z.string().optional(),
+    seoImage: z.string(),
     link: z.string(),
     isExternal: z.boolean(),
     featured: z.boolean(),

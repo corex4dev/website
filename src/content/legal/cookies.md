@@ -1,10 +1,9 @@
 ---
 title: Política de Cookies
 subtitle: ''
+lastUpdated: 2026-02-27
 short-description: Política de Cookies — CoreX4Dev
 ---
-
-**_Última actualización_:** 22 de febrero de 2026
 
 ## 1. Introducción
 

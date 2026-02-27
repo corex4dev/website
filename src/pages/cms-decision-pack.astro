@@ -14,24 +14,14 @@ import {
   TrendingUp,
 } from "@lucide/astro";
 import { Icon } from "astro-icon/components";
-import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
 
-const productData: CollectionEntry<"product"> = {
-  id: "cms-decision-pack",
-  data: {
-    title: "CMS Decision Pack",
-    description:
-      "Un sistema profesional para freelancers que necesitan justificar decisiones técnicas de CMS.",
-    price: 39.99,
-    featured: true,
-    isExternal: false,
-    link: "/cms-decision-pack",
-    listOrder: 1,
-    tech: [],
-    type: "product",
-  },
-  collection: "product",
-};
+const productData = await getEntry("product", "cms-decision-pack");
+
+if (!productData) {
+  Astro.redirect("/productos");
+  return;
+}
 
 const formattedPrice = Intl.NumberFormat("es-MX", {
   style: "currency",
@@ -476,9 +466,15 @@ const checkoutLink =
               Garantía de satisfacción CoreX4Dev • Soporte prioritario vía Email
             </p>
             <div class="flex gap-8">
-              <ShieldCheck class="text-slate-300 dark:text-slate-600" size={32} />
+              <ShieldCheck
+                class="text-slate-300 dark:text-slate-600"
+                size={32}
+              />
               <Zap class="text-slate-300 dark:text-slate-600" size={32} />
-              <TrendingUp class="text-slate-300 dark:text-slate-600" size={32} />
+              <TrendingUp
+                class="text-slate-300 dark:text-slate-600"
+                size={32}
+              />
             </div>
           </div>
         </div>
