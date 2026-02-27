@@ -1,5 +1,5 @@
 ---
-title: Politica Devoluciones
+title: Política de Devoluciones y Reembolsos
 subtitle: ''
 lastUpdated: 2026-02-27
 short-description: No aceptamos devoluciones de productos comprados salvo en los casos legalmente exigidos o cuando el artículo llegue defectuoso o incorrecto.
