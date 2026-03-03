@@ -4,7 +4,7 @@ description: 'Better Auth 1.5 es la actualización más ambiciosa del proyecto: 
 date: 2026-03-03
 image: /uploads/better-auth-1.5-corex4dev.png
 published: true
-featured: true
+featured: false
 youtubeId: ''
 reading_time: 8
 categories:
