@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "@/components/FormattedDate.astro";
+import CommentsSection from "@/components/blog/CommentsSection.astro";
 import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
 import { getBreadcrumbSchema } from "@/utils/jsonld";
@@ -155,6 +156,8 @@ const { Content } = await render(post);
         </footer>
       )
     }
+
+    <CommentsSection />
   </article>
 
   <JsonLd schema={breadcrumbSchema} />
