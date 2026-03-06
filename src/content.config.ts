@@ -23,6 +23,7 @@ const blog = defineCollection({
     youtubeId: z.string().optional(),
     reading_time: z.number().optional().nullable(),
     categories: z.array(z.string()).min(1),
+    keywords: z.array(z.string()).optional(),
   }),
 });
 

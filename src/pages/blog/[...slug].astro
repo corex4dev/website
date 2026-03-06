@@ -37,6 +37,8 @@ const { Content } = await render(post);
     description: post.data.description,
     image: { src: post.data.image, format: "jpg", height: 1080, width: 1920 },
     type: "article",
+    keywords: post.data.keywords,
+    overwriteKeywords: true,
   }}
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

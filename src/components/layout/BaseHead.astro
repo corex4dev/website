@@ -5,13 +5,9 @@ import "@/styles/global.css";
 import type { ImageMetadata } from "astro";
 import FallbackImage from "@/assets/favicon.svg";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import type { SeoOptions } from "@/types";
 
-interface Props {
-  title?: string;
-  description?: string;
-  image?: ImageMetadata;
-  type?: "website" | "article" | "product";
-}
+type Props = SeoOptions;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -20,7 +16,21 @@ const {
   description,
   image = FallbackImage,
   type = "website",
+  keywords = [],
+  overwriteKeywords = false,
 } = Astro.props;
+
+const defaultKeywords = [
+  "desarrollo web",
+  "CMS",
+  "Payload",
+  "Strapi",
+  "Stripe",
+  "Auth.js",
+  "Next.js",
+  "tutoriales programacion",
+  "CoreX4Dev",
+];
 
 const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 ---
@@ -63,7 +73,12 @@ const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 <meta name="description" content={description ?? SITE_DESCRIPTION} />
 <meta
   name="keywords"
-  content="desarrollo web, CMS, Payload, Strapi, Stripe, Auth.js, Next.js, tutoriales programacion, CoreX4Dev"
+  content={(overwriteKeywords
+    ? keywords.length > 0
+      ? keywords
+      : defaultKeywords
+    : [...defaultKeywords, ...keywords]
+  ).join(", ")}
 />
 
 <!-- Open Graph / Facebook -->

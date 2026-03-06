@@ -3,14 +3,10 @@ import type { ImageMetadata } from "astro";
 import MainLayout from "./MainLayout.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
+import type { SeoOptions } from "@/types";
 
 interface Props {
-  seoProps: {
-    title?: string;
-    description?: string;
-    type?: "website" | "article" | "product";
-    image?: ImageMetadata;
-  };
+  seoProps: SeoOptions;
 }
 
 const { seoProps } = Astro.props;
