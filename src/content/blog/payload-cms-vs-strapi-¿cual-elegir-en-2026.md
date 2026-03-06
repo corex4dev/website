@@ -14,6 +14,8 @@ categories:
 
 Si estás construyendo una web moderna, probablemente necesites un CMS que te dé libertad total sobre el frontend. En esta guía comparo en profundidad dos opciones populares: Payload CMS y Strapi. Analizaremos su filosofía, experiencia de desarrollo, experiencia para editores, escalabilidad, plugins y casos de uso típicos para ayudarte a elegir la herramienta adecuada para tu proyecto.
 
+_¿Quieres acelerar la decisión?_ Si prefieres una guía estructurada que te lleve paso a paso para elegir el CMS perfecto según tus requisitos (tipo de proyecto, equipo, hosting y prioridades), echa un vistazo al [**CMS Decision Pack — una guía práctica y checklist para elegir un CMS**](https://corex4dev.com/cms-decision-pack?utm_source=corex4dev.com). Es ideal para equipos y freelancers que necesitan decidir rápido sin perder rigor técnico.
+
 ## ¿Qué es un Headless CMS?
 
 Un _headless CMS_ separa la gestión de contenido (backend) de la presentación (frontend). El CMS expone contenido mediante APIs (REST/GraphQL) y tú eres libre de construir cualquier frontend: sitios estáticos, aplicaciones SPA, apps móviles o dispositivos IoT. Esta separación aporta flexibilidad, rendimiento y la posibilidad de reutilizar contenido en múltiples canales.
@@ -71,6 +73,8 @@ Strapi busca equilibrio: una experiencia sólida para desarrolladores **y** una 
 - ¿Cuánto control necesitas en el admin? Si necesitas lógica y customización al máximo desde código, Payload será más directo; si quieres menos código para empezar y más UX lista, Strapi acelera.
 - ¿Infra y operativa? Si no quieres gestionar infraestructura, valora Strapi Cloud; si prefieres control total y despliegues a medida, Payload se integra muy bien en pipelines de DevOps.
 
+**Sugerencia práctica:** si estás dudando entre ambos y quieres evitar invertir tiempo en pruebas largas, el **CMS Decision Pack** contiene una checklist y criterios prácticos que puedes aplicar a tu proyecto en minutos para reducir la opción a la mejor candidata. [Ver CMS Decision Pack](https://corex4dev.com/cms-decision-pack?utm_source=corex4dev.com)
+
 ## Recomendaciones de evaluación (pasos recomendados)
 
 1. **Crea una prueba rápida:** en 1–2 días monta un CRUD con autenticación, subida de media y un endpoint público en cada CMS. Evalúa la DX y la UX editorial.
@@ -81,6 +85,9 @@ Strapi busca equilibrio: una experiencia sólida para desarrolladores **y** una 
 ## Conclusión
 
 No existe la mejor opción universal: **si priorizas control absoluto desde el código y una experiencia fuertemente tipada, Payload es una opción sobresaliente**; **si quieres minimizar fricción para equipos de contenido y aprovechar un ecosistema de plugins y una UI madura, Strapi será probablemente la opción más rápida**. En la práctica, la elección se reduce a la experiencia del equipo (más devs → Payload; mezcla o más editores → Strapi) y a las prioridades de operativa/hosting.
+
+Si quieres una ayuda práctica para aplicar todo lo anterior directamente a tu proyecto (plantillas de evaluación, checklist imprimible y ejemplos de pruebas rápidas), revisa el **CMS Decision Pack** — es una forma rápida y práctica de convertir esta guía en una decisión accionable:
+\*\*👉 \*\*[**CMS Decision Pack — guía y checklist práctica**](https://corex4dev.com/cms-decision-pack?utm_source=corex4dev.com)
 
 ## Recursos y lecturas
 
