@@ -10,6 +10,15 @@ reading_time: 8
 categories:
   - Autenticación
   - General
+keywords:
+  - Better Auth 1.5
+  - autenticación
+  - SSO
+  - OAuth 2.1
+  - CLI
+  - infraestructura auth
+  - auth moderna
+  - JavaScript auth
 ---
 
 Better Auth se está haciendo un nombre entre las librerías de autenticación porque apuesta por simplicidad y flexibilidad: no te impone una UI, te deja escoger estrategias (JWT, sesiones, OAuth) y se integra bien con el stack moderno. Si alguna vez te frustró el exceso de “magia” o el vendor-lock de otras soluciones, Better Auth ofrece una experiencia más limpia y predecible.

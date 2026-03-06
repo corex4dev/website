@@ -6,7 +6,7 @@ image: https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1600&aut
 published: true
 featured: false
 youtubeId: ''
-reading_time: 3
+reading_time: 6
 categories:
   - Autenticación
 ---

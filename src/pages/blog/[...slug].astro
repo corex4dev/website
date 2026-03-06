@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "@/components/FormattedDate.astro";
+import CommentsSection from "@/components/blog/CommentsSection.astro";
 import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
 import { getBreadcrumbSchema } from "@/utils/jsonld";
@@ -37,6 +38,8 @@ const { Content } = await render(post);
     description: post.data.description,
     image: { src: post.data.image, format: "jpg", height: 1080, width: 1920 },
     type: "article",
+    keywords: post.data.keywords,
+    overwriteKeywords: true,
   }}
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -116,7 +119,7 @@ const { Content } = await render(post);
     </div>
 
     <div
-      class="prose prose-lg max-w-none prose-slate dark:prose-invert prose-headings:font-black prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-img:rounded-3xl leading-relaxed text-slate-700 dark:text-slate-400"
+      class="prose prose-lg max-w-none prose-slate dark:prose-invert prose-headings:font-black prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-img:rounded-3xl leading-relaxed text-slate-700 dark:text-slate-300"
     >
       <Content />
     </div>
@@ -153,6 +156,8 @@ const { Content } = await render(post);
         </footer>
       )
     }
+
+    <CommentsSection />
   </article>
 
   <JsonLd schema={breadcrumbSchema} />

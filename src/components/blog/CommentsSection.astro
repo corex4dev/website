@@ -1,0 +1,47 @@
+---
+import { MessageSquare } from "@lucide/astro";
+---
+
+<section class="mt-16 pt-12 border-t border-slate-200/90 dark:border-slate-700/50" id="comments">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3">
+      <div
+        class="w-10 h-10 bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-100 rounded-xl flex items-center justify-center"
+      >
+        <MessageSquare size={20} />
+      </div>
+      <h2 class="text-2xl font-black">Comentarios</h2>
+    </div>
+  </div>
+  <div
+    id="zoomment"
+    data-theme="light"
+    data-language="es"
+    data-gravatar="monsterid"
+    data-emotions="❤️,😀,🪄,🥸,💡,🤔,💩,😢"
+  >
+  </div>
+</section>
+
+<script is:inline>
+  function appendComments() {
+    const s = document.createElement("script");
+    s.src = "https://cdn.zoomment.com/zoomment.min.js";
+    document.body.appendChild(s);
+  }
+
+  function determineTheme() {
+    const commentBox = document.getElementById("zoomment");
+
+    const theme =
+      window.theme.getTheme() === "auto"
+        ? window.theme.getSystemTheme()
+        : window.theme.getTheme();
+    commentBox.setAttribute("data-theme", theme);
+  }
+
+  document.addEventListener("astro:page-load", appendComments);
+
+  document.addEventListener("theme-changed", determineTheme);
+  document.addEventListener("astro:page-load", determineTheme);
+</script>

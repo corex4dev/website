@@ -128,6 +128,11 @@
           "display_fields": ["title"],
           "value_field": "{{title}}"
         },
+        {
+          "name": "keywords",
+          "widget": "list",
+          "required": false
+        },
         { "name": "body", "widget": "markdown", "required": true }
       ]
     },
