@@ -162,7 +162,7 @@ Si estás evaluando tecnologías para tu próximo proyecto, probablemente te res
 
 ***
 
-# Fuentes
+## Fuentes
 
 - Polar.sh Documentation — [https://docs.polar.sh](https://docs.polar.sh)
 - Polar.sh Product Overview — [https://polar.sh](https://polar.sh)
