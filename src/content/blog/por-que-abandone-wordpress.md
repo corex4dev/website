@@ -10,6 +10,16 @@ reading_time: 9
 categories:
   - CMS
   - General
+keywords:
+  - abandonar WordPress
+  - migración CMS
+  - Strapi
+  - Payload
+  - Sveltia
+  - experiencia desarrollador
+  - headless CMS
+  - decisión CMS
+  - CoreX4Dev
 ---
 
 WordPress me sirvió durante años para entregar resultados rápidos: prototipos, páginas corporativas y sitios que no requerían arquitectura compleja. Con el tiempo, sin embargo, las necesidades de mis proyectos cambiaron. Ya no buscaba solo velocidad de arranque, sino previsibilidad en producción, capacidad de extensión sin parches, y un modelo de trabajo que permitiera a mi equipo iterar con confianza. Migrar a CMSs como Strapi o Payload y, en proyectos más orientados a contenido puro, a soluciones como Sveltia, fue una decisión motivada por resultados tangibles: mejor experiencia de desarrollo, menos tiempo en mantenimiento y más control sobre la arquitectura.
