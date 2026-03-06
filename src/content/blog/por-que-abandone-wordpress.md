@@ -2,7 +2,7 @@
 title: ¿Por qué abandoné WordPress?
 description: 'Por qué migré de WordPress a CMS modernos (Strapi, Payload, Sveltia): mejoras en DX, control del stack, rendimiento y procesos de migración.'
 date: 2026-03-04
-image: /uploads/por-que-abandone-wordpress.png
+image: /uploads/por-que-abandone-wordpress-2.png
 published: true
 featured: false
 youtubeId: ''
