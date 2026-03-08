@@ -164,8 +164,8 @@ Si estás evaluando tecnologías para tu próximo proyecto, probablemente te res
 
 ## Fuentes
 
-- Polar.sh Documentation — [https://docs.polar.sh](https://docs.polar.sh)
-- Polar.sh Product Overview — [https://polar.sh](https://polar.sh)
-- W3Techs CMS Usage Statistics — [https://w3techs.com/technologies/overview/content_management](https://w3techs.com/technologies/overview/content_management)
-- Stripe Documentation — [https://docs.stripe.com](https://docs.stripe.com)
-- VAT rules for digital services (EU) — [https://taxation-customs.ec.europa.eu](https://taxation-customs.ec.europa.eu)
+- Polar.sh Documentation — [[abrir]](https://docs.polar.sh)
+- Polar.sh Product Overview — [[abrir]](https://polar.sh)
+- W3Techs CMS Usage Statistics — [[abrir]](https://w3techs.com/technologies/overview/content_management)
+- Stripe Documentation — [[abrir]](https://docs.stripe.com)
+- VAT rules for digital services (EU) — [[abrir]](https://taxation-customs.ec.europa.eu)
