@@ -4,7 +4,7 @@ description: Elegir mal el stack tecnológico puede comprometer un proyecto desd
 date: 2026-03-08
 image: /uploads/errors-picking-your-stack.png
 published: true
-featured: false
+featured: true
 youtubeId: ''
 reading_time: 8
 categories:
