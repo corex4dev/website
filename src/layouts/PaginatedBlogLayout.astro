@@ -1,17 +1,24 @@
 ---
+import type { PaginatedCollection } from "@/types";
 import { getBreadcrumbSchema } from "@/utils/jsonld";
 import WebsiteLayout from "./WebsiteLayout.astro";
-import JsonLd from "@/components/layout/JsonLd.astro";
-import type { CollectionEntry } from "astro:content";
-import Controls from "@/components/blog/Controls.astro";
 import PostCard from "@/components/blog/PostCard.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
+import Controls from "@/components/blog/Controls.astro";
+import PaginationControls from "@/components/blog/PaginationControls.tsx";
+import { PAGINATE_LIMITS } from "@/consts";
 
 interface Props {
   category?: string;
-  posts: CollectionEntry<"blog">[];
+  currentPage?: number;
+  posts: PaginatedCollection<"blog">;
 }
 
-const { category, posts } = Astro.props;
+const {
+  category,
+  posts: { items: posts, total, totalPages },
+  currentPage = 1,
+} = Astro.props;
 
 const breadcrumbs = [
   { name: "Inicio", item: "/" },
@@ -23,6 +30,35 @@ if (category) {
     { name: "Blog Categorías", item: "/blog/categoria" },
     { name: `Blog Categoría ${category}`, item: `/blog/categoria/${category}` },
   );
+
+  if (currentPage > 1) {
+    breadcrumbs.push({
+      name: `Blog Categoría ${category} Pagina ${currentPage}`,
+      item: `/blog/categoria/${category}/page/${currentPage}`,
+    });
+  }
+} else {
+  breadcrumbs.push({
+    name: `Blog Pagina ${currentPage}`,
+    item: `/blog/page/${currentPage}`,
+  });
+}
+
+function renderCount(filteredTotal: number, visibleCount: number) {
+  const word = filteredTotal === 1 ? "artículo" : "artículos";
+
+  if (filteredTotal === 0) {
+    return "No hay artículos que coincidan.";
+  }
+
+  const start = (currentPage - 1) * PAGINATE_LIMITS.BLOG + 1;
+  const end = start + visibleCount - 1;
+
+  if (filteredTotal === total) {
+    return `Mostrando ${start} - ${end} de ${total} ${word}`;
+  } else {
+    return `Mostrando ${start} - ${end} de ${filteredTotal} ${word} (${total} totales)`;
+  }
 }
 
 const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
@@ -30,13 +66,13 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
 
 <WebsiteLayout seoProps={{ title: "Blog de Desarrollo Web" }}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
-    <header class="mb-16">
-      <h1
-        class="text-4xl lg:text-5xl font-extrabold  mb-6 tracking-tight"
-      >
+    <header class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight">
         Blog de Desarrollo
       </h1>
-      <p class="text-xl text-slate-600 dark:text-slate-500 max-w-3xl">
+      <p
+        class="text-lg sm:text-xl text-slate-600 dark:text-slate-500 max-w-3xl"
+      >
         Tutoriales detallados, comparativas de herramientas y experiencias
         reales escalando aplicaciones web.
       </p>
@@ -46,7 +82,9 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
 
     {/* Posts Count info */}
     <div class="mb-8 text-sm text-slate-500 font-medium">
-      <div id="postsCountInfo"></div>
+      <div id="postsCountInfo">
+        {renderCount(total, posts.length)}
+      </div>
     </div>
 
     {/* Posts Grid */}
@@ -71,11 +109,15 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
       </div>
     </div>
 
-    <div class="mt-16 flex justify-center items-center gap-4" id="pagination">
+    <div class="mt-16 flex justify-center items-center gap-4">
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        currentCategory={category}
+        client:load
+      />
     </div>
   </div>
-
-  <script is:inline src="/js/blog-page.js"></script>
 
   <JsonLd schema={breadcrumbSchema} />
 </WebsiteLayout>

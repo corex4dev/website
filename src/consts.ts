@@ -26,3 +26,8 @@ export const socialLinks: { icon: string; name: string; url: string }[] = [
     url: "https://github.com/corex4dev",
   },
 ];
+
+export const PAGINATE_LIMITS = {
+  BLOG: 12,
+  VIDEOS: 12,
+};

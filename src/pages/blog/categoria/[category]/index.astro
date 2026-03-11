@@ -1,5 +1,7 @@
 ---
-import BlogPageLayout from "@/layouts/BlogPageLayout.astro";
+import { PAGINATE_LIMITS } from "@/consts";
+import PaginatedBlogLayout from "@/layouts/PaginatedBlogLayout.astro";
+import { paginateArray } from "@/utils/paginate";
 import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
@@ -24,6 +26,8 @@ const posts = (
     v.data.categories.includes(categoryEntry.data.title),
   )
 ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const paginated = paginateArray<"blog">(posts, 1, PAGINATE_LIMITS.BLOG);
 ---
 
-<BlogPageLayout category={category} posts={posts} />
+<PaginatedBlogLayout category={category} posts={paginated} />
