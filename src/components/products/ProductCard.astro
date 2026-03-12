@@ -83,6 +83,7 @@ const Icon = IconsMap[project.data.type].Icon;
       class={`text-slate-500 dark:text-slate-400 ${compact ? "text-sm" : "text-lg"} leading-relaxed mb-4 flex-1 line-clamp-3`}
       title={project.data.description}
     >
+    <!-- FIXME: Markdown not working with Astro 6 -->
       <Markdown of={project.data.description} />
     </div>
 

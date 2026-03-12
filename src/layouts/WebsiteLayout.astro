@@ -4,6 +4,7 @@ import MainLayout from "./MainLayout.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
 import type { SeoOptions } from "@/types";
+import GlobalSearch from "@/components/search/GlobalSearch";
 
 interface Props {
   seoProps: SeoOptions;
@@ -19,6 +20,10 @@ const { seoProps } = Astro.props;
       <slot />
     </main>
     <Footer />
+
+    <div transition:persist="search-bar">
+      <GlobalSearch client:only />
+    </div>
 
     <!-- AIAssistant -->
   </div>

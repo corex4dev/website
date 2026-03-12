@@ -12,11 +12,15 @@ import preact from '@astrojs/preact';
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  integrations: [sitemap({
-    changefreq: "monthly",
-    priority: 0.9,
-    lastmod: new Date()
-  }), icon(), preact()],
+  integrations: [
+    sitemap({
+      changefreq: "monthly",
+      priority: 0.9,
+      lastmod: new Date()
+    }),
+    icon(),
+    preact()
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
