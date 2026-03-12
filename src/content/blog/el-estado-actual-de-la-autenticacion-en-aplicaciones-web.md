@@ -5,7 +5,7 @@ date: 2026-03-10
 image: /uploads/current-state-auth.png
 published: true
 featured: false
-youtubeId: autenticación web moderna, passkeys, oauth, better auth, authjs, login moderno
+youtubeId: ''
 reading_time: 8
 categories:
   - Autenticación
@@ -16,6 +16,9 @@ keywords:
   - better auth
   - authjs
   - login moderno
+related:
+  - better-auth-1-5-el-salto-mas-grande-del-proyecto-hasta-ahora
+  - autenticacion-moderna-con-auth-js-nextauth-v5
 ---
 
 Durante muchos años la autenticación en aplicaciones web siguió un modelo bastante simple: usuarios con email y contraseña almacenados en una base de datos.

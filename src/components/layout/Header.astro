@@ -2,9 +2,10 @@
 import HeaderLink from "./HeaderLink.astro";
 import Logo from "@/assets/favicon.svg";
 import { Icon } from "astro-icon/components";
-import { Menu, X } from "@lucide/astro";
+import { Menu, Search, X } from "@lucide/astro";
 import { Image } from "astro:assets";
 import { ThemeToggleButton } from "../theme";
+import { GlobalSearchTrigger } from "../search/GlobalSearch";
 
 const navLinks = [
   { name: "Inicio", path: "/" },
@@ -29,15 +30,14 @@ const navLinks = [
               loading="eager"
               class="w-8 h-8 group-hover:rotate-12 transition-transform"
             />
-            <span
-              class="font-bold text-xl tracking-tight  dark:text-white"
+            <span class="font-bold text-xl tracking-tight dark:text-white"
               >CoreX4Dev</span
             >
           </a>
         </div>
 
         {/* Desktop Links */}
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
           {
             navLinks.map((link) => (
               <HeaderLink
@@ -48,6 +48,15 @@ const navLinks = [
               </HeaderLink>
             ))
           }
+
+          <GlobalSearchTrigger
+            client:only
+            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-slate-50 dark:hover:bg-indigo-900 dark:hover:text-slate-50 rounded-xl transition-all flex items-center gap-2 me-4"
+            title="Buscar (Ctrl + K)"
+          >
+            <Search size={20} />
+          </GlobalSearchTrigger>
+
           <div class="flex items-center space-x-4">
             <a
               href="https://youtube.com/@CoreX4Dev"
@@ -60,7 +69,7 @@ const navLinks = [
             <a
               href="https://github.com/corex4dev"
               target="_blank"
-              class="text-slate-400 hover: dark:hover:text-white transition-colors"
+              class="text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors"
               aria-label="Enlace a Github"
             >
               <Icon name="fa7-brands:github" class="w-7 h-7" />
@@ -73,6 +82,14 @@ const navLinks = [
 
         {/* Mobile Menu Button */}
         <div class="md:hidden flex items-center">
+          <!-- onClick={onOpenSearch} -->
+          <GlobalSearchTrigger
+            client:only
+            className="p-2 text-slate-600 hover:text-indigo-600 dark:hover:bg-indigo-900 dark:hover:text-slate-50  transition-colors"
+            title="Buscar (Ctrl+K)"
+          >
+            <Search size={24} />
+          </GlobalSearchTrigger>
           <div class="me-2">
             <ThemeToggleButton />
           </div>

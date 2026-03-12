@@ -11,7 +11,7 @@ const categories = await getCollection("category");
 ---
 
 {/* Controls */}
-<div class="flex flex-col lg:flex-row gap-8 mb-12">
+<div class="flex flex-col lg:flex-row gap-8 mb-4">
   <div class="relative flex-1">
     <Search
       class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -20,7 +20,7 @@ const categories = await getCollection("category");
     <input
       type="search"
       placeholder="Buscar por título de vídeo..."
-      class="w-full pl-12 pr-4 py-4 rounded-2xl border focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm input-field"
+      class="w-full pl-12 pr-3 py-2.5 rounded-2xl border focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm input-field"
       id="searchInput"
     />
   </div>
@@ -28,7 +28,7 @@ const categories = await getCollection("category");
     <Filter class="text-slate-400 hidden sm:block" size={20} />
     <a
       href={`/videos`}
-      class={`px-6 py-3 rounded-xl whitespace-nowrap font-medium transition-all ${
+      class={`px-5 py-2.5 rounded-xl whitespace-nowrap font-bold text-sm transition-all border ${
         !selectedCategory
           ? "bg-red-600 text-white shadow-lg shadow-red-100 dark:shadow-red-900/50"
           : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"
@@ -40,7 +40,7 @@ const categories = await getCollection("category");
       categories.map((cat) => (
         <a
           href={`/videos/${cat.id}`}
-          class={`px-6 py-3 rounded-xl whitespace-nowrap font-medium transition-all ${
+          class={`px-5 py-2.5 rounded-xl whitespace-nowrap font-bold text-sm transition-all border ${
             selectedCategory === cat.id
               ? "bg-red-600 text-white shadow-lg shadow-red-100 dark:shadow-red-900/50"
               : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"

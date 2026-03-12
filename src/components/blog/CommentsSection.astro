@@ -2,7 +2,10 @@
 import { MessageSquare } from "@lucide/astro";
 ---
 
-<section class="mt-16 pt-12 border-t border-slate-200/90 dark:border-slate-700/50" id="comments">
+<section
+  class="mt-16 pt-12 border-t border-slate-200/90 dark:border-slate-700/50"
+  id="comments"
+>
   <div class="flex items-center justify-between mb-8">
     <div class="flex items-center gap-3">
       <div
@@ -37,7 +40,7 @@ import { MessageSquare } from "@lucide/astro";
       window.theme.getTheme() === "auto"
         ? window.theme.getSystemTheme()
         : window.theme.getTheme();
-    commentBox.setAttribute("data-theme", theme);
+    commentBox?.setAttribute("data-theme", theme);
   }
 
   document.addEventListener("astro:page-load", appendComments);

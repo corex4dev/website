@@ -1,0 +1,42 @@
+---
+import { PAGINATE_LIMITS } from "@/consts";
+import PaginatedBlogLayout from "@/layouts/PaginatedBlogLayout.astro";
+import { paginateArray } from "@/utils/paginate";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const categories = await getCollection("category");
+  const all = await getCollection("blog");
+
+  const paths = [];
+  for (const cat of categories) {
+    const items = all.filter((p) =>
+      (p.data.categories || []).includes(cat.data.title),
+    );
+    const pages = Math.max(1, Math.ceil(items.length / PAGINATE_LIMITS.BLOG));
+    for (let i = 1; i <= pages; i++) {
+      paths.push({ params: { category: cat.id, page: String(i) } });
+    }
+  }
+  return paths;
+};
+
+const { category } = Astro.params;
+const page = Number(Astro.params.page || 1);
+const categoryEntry = await getEntry("category", category);
+
+if (!categoryEntry) {
+  Astro.redirect("/blog");
+}
+
+const posts = (
+  await getCollection("blog", (v) =>
+    v.data.categories.includes(categoryEntry.data.title),
+  )
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const paginated = paginateArray<"blog">(posts, page, PAGINATE_LIMITS.BLOG);
+---
+
+<PaginatedBlogLayout category={category} posts={paginated} currentPage={page} />

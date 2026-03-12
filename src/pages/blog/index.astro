@@ -1,11 +1,14 @@
 ---
-import BlogPageLayout from "@/layouts/BlogPageLayout.astro";
-import { getBreadcrumbSchema } from "@/utils/jsonld";
+import { PAGINATE_LIMITS } from "@/consts";
+import PaginatedBlogLayout from "@/layouts/PaginatedBlogLayout.astro";
+import { paginateArray } from "@/utils/paginate";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+
+const paginated = paginateArray<"blog">(posts, 1, PAGINATE_LIMITS.BLOG);
 ---
 
-<BlogPageLayout posts={posts} />
+<PaginatedBlogLayout posts={paginated} />

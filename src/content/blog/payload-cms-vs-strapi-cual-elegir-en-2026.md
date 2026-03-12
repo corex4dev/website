@@ -10,6 +10,9 @@ reading_time: 5
 categories:
   - CMS
   - General
+related:
+  - el-gran-problema-de-muchos-proyectos-web-elegir-mal-el-stack
+  - por-que-abandone-wordpress
 ---
 
 Si estás construyendo una web moderna, probablemente necesites un CMS que te dé libertad total sobre el frontend. En esta guía comparo en profundidad dos opciones populares: Payload CMS y Strapi. Analizaremos su filosofía, experiencia de desarrollo, experiencia para editores, escalabilidad, plugins y casos de uso típicos para ayudarte a elegir la herramienta adecuada para tu proyecto.

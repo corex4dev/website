@@ -133,6 +133,18 @@
           "widget": "list",
           "required": false
         },
+        {
+          "name": "related",
+          "label": "Related Posts",
+          "hint": "Up to 3",
+          "widget": "relation",
+          "multiple": true,
+          "max": 3,
+          "collection": "posts",
+          "search_fields": ["title"],
+          "display_fields": ["title"],
+          "value_field": "{{slug}}"
+        },
         { "name": "body", "widget": "markdown", "required": true }
       ]
     },

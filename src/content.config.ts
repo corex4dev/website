@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const category = defineCollection({
   loader: glob({ pattern: "*.json", base: "./src/content/categories" }),
@@ -23,6 +24,7 @@ const blog = defineCollection({
     youtubeId: z.string().optional(),
     reading_time: z.number().optional().nullable(),
     categories: z.array(z.string()).min(1),
+    related: z.array(z.string()).max(3).optional(),
     keywords: z.array(z.string()).optional(),
   }),
 });

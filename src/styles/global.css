@@ -101,3 +101,7 @@ a.nav-link.active {
     content: "";
   }
 }
+
+.scrollbar-hide {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
