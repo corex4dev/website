@@ -14,6 +14,9 @@ keywords:
   - arquitectura web
   - decisiones técnicas desarrollo web
   - tecnología para proyectos web
+related:
+  - por-que-abandone-wordpress
+  - payload-cms-vs-strapi-cual-elegir-en-2026
 ---
 
 En desarrollo web solemos hablar mucho de frameworks, librerías y nuevas herramientas. Cada semana aparecen tecnologías prometiendo mejorar la experiencia de desarrollo o resolver problemas que antes parecían complejos.

@@ -1,10 +1,11 @@
 ---
 import FormattedDate from "@/components/FormattedDate.astro";
 import CommentsSection from "@/components/blog/CommentsSection.astro";
+import RelatedPosts from "@/components/blog/RelatedPosts.astro";
 import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
 import { getBreadcrumbSchema } from "@/utils/jsonld";
-import { ArrowLeft, Calendar, Share2 } from "@lucide/astro";
+import { ArrowLeft, Calendar, Share2, Sparkles } from "@lucide/astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getCollection, render } from "astro:content";
@@ -154,6 +155,20 @@ const { Content } = await render(post);
             </div>
           </div>
         </footer>
+      )
+    }
+
+    {
+      post.data.related && post.data.related.length > 0 && (
+        <section class="mt-16">
+          <h3 class="text-xl font-black mb-8 flex items-center gap-2">
+            <Sparkles size={20} class="text-indigo-600 dark:text-indigo-500" />{" "}
+            Artículos relacionados
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <RelatedPosts relatadSlugs={post.data.related} />
+          </div>
+        </section>
       )
     }
 

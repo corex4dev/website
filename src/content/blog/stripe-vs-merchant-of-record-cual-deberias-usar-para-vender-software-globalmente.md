@@ -18,6 +18,9 @@ keywords:
   - polar
   - paddle
   - lemon squeezy
+related:
+  - polar-sh-una-nueva-forma-de-vender-software-sin-volverte-loco-con-los-impuestos
+  - stripe-la-infraestructura-financiera-detras-del-internet-moderno
 ---
 
 Cuando un desarrollador decide monetizar un producto digital, una de las primeras decisiones técnicas que debe tomar es cómo procesar los pagos. Durante muchos años la respuesta más común ha sido integrar **Stripe** directamente en la aplicación. Su API es potente, flexible y se ha convertido prácticamente en el estándar para pagos en internet.

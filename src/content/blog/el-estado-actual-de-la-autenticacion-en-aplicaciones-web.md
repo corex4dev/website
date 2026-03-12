@@ -16,6 +16,9 @@ keywords:
   - better auth
   - authjs
   - login moderno
+related:
+  - better-auth-1-5-el-salto-mas-grande-del-proyecto-hasta-ahora
+  - autenticacion-moderna-con-auth-js-nextauth-v5
 ---
 
 Durante muchos años la autenticación en aplicaciones web siguió un modelo bastante simple: usuarios con email y contraseña almacenados en una base de datos.
