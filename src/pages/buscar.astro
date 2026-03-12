@@ -1,0 +1,15 @@
+---
+import SearchPage from "@/components/search/SearchPage";
+import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
+---
+
+<WebsiteLayout
+  seoProps={{
+    title: "Resultados de búsqueda",
+    description: "Explora los resultados de búsqueda en CoreX4Dev.",
+  }}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <SearchPage client:only />
+  </div>
+</WebsiteLayout>

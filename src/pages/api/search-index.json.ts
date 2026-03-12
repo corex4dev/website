@@ -45,7 +45,7 @@ export const GET = async (ctx: APIContext) => {
         link = entity.data.isExternal
           ? entity.data.link
           : new URL(entity.data.link, ctx.url).toString();
-        image = entity.data.seoImage;
+        image = entity.data.thumbnail;
         break;
       case "video":
         description = entity.data.description ?? entity.data.title;

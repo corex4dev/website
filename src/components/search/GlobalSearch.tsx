@@ -171,7 +171,9 @@ const GlobalSearch = () => {
   const handleSearch = (e: Event | undefined) => {
     e?.preventDefault?.();
     if (query.trim()) {
-      navigate(`/buscar?q=${encodeURIComponent(query.trim())}`);
+      navigate(`/buscar?q=${encodeURIComponent(query.trim())}`, {
+        history: window.location.href.includes("/buscar") ? "replace" : "auto",
+      });
       onClose();
     }
   };
@@ -211,25 +213,33 @@ const GlobalSearch = () => {
             className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
           />
 
-          <div className="relative w-full max-w-2xl bg-white rounded-4xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div className="relative w-full max-w-2xl rounded-2xl shadow-2xl border overflow-hidden bg-white border-slate-200 dark:bg-slate-800 dark:border-slate-700">
             <form
               onSubmit={(e) => handleSearch(e as unknown as Event)}
-              className="p-4 border-b border-slate-100 flex items-center gap-4"
+              className="p-4 border-b border-slate-100 dark:border-slate-700 flex items-center gap-4"
             >
               <Search className="text-slate-400 ml-2" size={24} />
+              <label htmlFor="search-input" className="sr-only">
+                Busca tutoriales, vídeos o productos...
+              </label>
               <input
+                id="search-input"
                 ref={inputRef}
                 autoFocus
+                role="searchbox"
+                aria-expanded={isOpen}
+                aria-controls="search-results"
+                aria-autocomplete="list"
                 type="search"
                 placeholder="Busca tutoriales, vídeos o productos..."
                 value={query}
                 onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
-                className="flex-1 bg-transparent focus:ring-0 outline-0 text-lg border-b border-slate-200 placeholder:text-slate-400 py-2"
+                className="flex-1 bg-transparent focus:ring-0 outline-0 text-lg border-b border-slate-200 placeholder:text-slate-400 dark:border-slate-600 py-2"
               />
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2 hover:bg-slate-100 rounded-full text-slate-400 transition-colors"
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full text-slate-400 transition-colors"
               >
                 <X size={20} />
               </button>
@@ -238,7 +248,7 @@ const GlobalSearch = () => {
             <div className="max-h-[60vh] overflow-y-auto p-2">
               {query.trim() === "" ? (
                 <div className="p-8 text-center">
-                  <p className="text-slate-500">
+                  <p className="text-slate-500 dark:text-slate-400">
                     Escribe algo para empezar a buscar...
                   </p>
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -246,7 +256,7 @@ const GlobalSearch = () => {
                       <button
                         key={tag}
                         onClick={() => setQuery(tag)}
-                        className="px-3 py-1 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg text-sm text-slate-600 transition-colors"
+                        className="px-3 py-1 bg-slate-100 dark:bg-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:text-indigo-600 dark:hover:text-indigo-50 rounded-lg text-sm text-slate-600 dark:text-slate-300 transition-colors"
                       >
                         {tag}
                       </button>
@@ -257,8 +267,11 @@ const GlobalSearch = () => {
                 <div className="space-y-4">
                   {suggestions.length > 0 && (
                     <div className="px-2 pt-2">
-                      <div className="px-2 py-1 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                        <Sparkles size={12} className="text-indigo-400" />
+                      <div className="px-2 py-1 text-[10px] font-black text-slate-400 dark:text-slate-300 uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <Sparkles
+                          size={12}
+                          className="text-indigo-400 dark:text-indigo-300"
+                        />
                         <span>Sugerencias rápidas</span>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -266,7 +279,7 @@ const GlobalSearch = () => {
                           <button
                             key={`suggest-${idx}`}
                             onClick={() => setQuery(suggestion)}
-                            className="px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 border border-slate-100 hover:border-indigo-200 rounded-xl text-xs font-bold text-slate-600 hover:text-indigo-600 transition-all"
+                            className="px-3 py-1.5 bg-slate-50 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-600 border border-slate-100 dark:border-slate-500 hover:border-indigo-200 dark:hover:border-indigo-400 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-100 transition-all"
                           >
                             {suggestion}
                           </button>
@@ -276,8 +289,8 @@ const GlobalSearch = () => {
                   )}
 
                   {results.length > 0 && (
-                    <div className="space-y-1">
-                      <div className="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-wider">
+                    <div className="space-y-1" id="search-results">
+                      <div className="px-4 py-2 text-[10px] font-black text-slate-400 dark:text-slate-300 uppercase tracking-wider">
                         Resultados relevantes
                       </div>
                       {results.map((result) => (
@@ -291,9 +304,9 @@ const GlobalSearch = () => {
                             }
                             onClose();
                           }}
-                          className="w-full flex items-center gap-4 p-4 hover:bg-slate-50 rounded-2xl transition-all group text-left"
+                          className="w-full flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-2xl transition-all group text-left"
                         >
-                          <div className="w-12 h-12 rounded-xl bg-slate-100 shrink-0 overflow-hidden flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700 shrink-0 overflow-hidden flex items-center justify-center">
                             {result.image ? (
                               <img
                                 src={result.image}
@@ -306,20 +319,20 @@ const GlobalSearch = () => {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5">
-                              <span className="text-[10px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
+                              <span className="text-[10px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300">
                                 {getLabel(result.type)}
                               </span>
-                              <h4 className="font-bold text-slate-900 truncate group-hover:text-indigo-600 transition-colors">
+                              <h4 className="font-bold truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                 {result.title}
                               </h4>
                             </div>
-                            <p className="text-sm text-slate-500 truncate">
+                            <p className="text-sm text-slate-500 dark:text-slate-400 truncate">
                               {result.description}
                             </p>
                           </div>
                           <ArrowRight
                             size={18}
-                            className="text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all"
+                            className="text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all"
                           />
                         </button>
                       ))}
@@ -328,17 +341,17 @@ const GlobalSearch = () => {
 
                   <button
                     onClick={() => handleSearch(undefined)}
-                    className="w-full p-4 text-center text-indigo-600 font-bold hover:bg-indigo-50 rounded-2xl transition-colors mt-2"
+                    className="w-full p-4 text-center text-indigo-600 font-bold dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-900 rounded-2xl transition-colors mt-2"
                   >
                     Ver todos los resultados para "{query}"
                   </button>
                 </div>
               ) : (
                 <div className="p-12 text-center">
-                  <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Search size={32} className="text-slate-300" />
                   </div>
-                  <p className="text-slate-500">
+                  <p className="text-slate-500 dark:text-slate-400">
                     No se encontraron resultados para "{query}"
                   </p>
                 </div>
