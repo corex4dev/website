@@ -5,7 +5,7 @@ date: 2026-03-10
 image: /uploads/current-state-auth.png
 published: true
 featured: false
-youtubeId: autenticación web moderna, passkeys, oauth, better auth, authjs, login moderno
+youtubeId: ''
 reading_time: 8
 categories:
   - Autenticación

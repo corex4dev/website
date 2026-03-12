@@ -20,7 +20,9 @@
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^6.0.1",
     "astro-icon": "^1.1.5",
+    "i": "^0.3.7",
     "lucide-preact": "^0.577.0",
+    "npm": "^11.11.1",
     "preact": "^10.28.4",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.2.0"
