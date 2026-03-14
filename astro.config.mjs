@@ -21,6 +21,7 @@ export default defineConfig({
     icon(),
     preact()
   ],
+  trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],
   },
