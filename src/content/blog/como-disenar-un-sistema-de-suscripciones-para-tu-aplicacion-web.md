@@ -20,6 +20,7 @@ keywords:
 related:
   - polar-sh-una-nueva-forma-de-vender-software-sin-volverte-loco-con-los-impuestos
   - stripe-la-infraestructura-financiera-detras-del-internet-moderno
+  - arquitectura-moderna-de-contenido-cms-frontend-desacoplado
 ---
 
 Monetizar una aplicación web suele parecer sencillo al principio. La idea es clara: ofrecer un producto, cobrar una suscripción mensual y permitir que los usuarios accedan al servicio mientras su plan esté activo.
