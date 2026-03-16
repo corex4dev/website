@@ -5,7 +5,7 @@ date: 2026-03-16
 image: /uploads/sistema-suscripciones-web.png
 published: true
 featured: false
-youtubeId: https://youtu.be/1Mx0xOhC1fg?si=c-GpS8g5O1qYgEHd
+youtubeId: ''
 reading_time: 11
 categories:
   - Pagos
