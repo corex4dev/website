@@ -77,7 +77,9 @@ export const getBlogPostSchema = (post: CollectionEntry<"blog">) => ({
   },
   headline: post.data.title,
   description: post.data.description,
-  image: post.data.image,
+  image: post.data.image.startsWith("http")
+    ? post.data.image
+    : `${SITE_URL}${post.data.image}`,
   datePublished: post.data.date,
   dateModified: post.data.date,
   author: { "@id": `${SITE_URL}/#person` },
