@@ -83,7 +83,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
     {/* Posts Count info */}
     <div class="mb-8 text-sm text-slate-500 font-medium">
       <div id="postsCountInfo">
-        {renderCount(total, posts.length)}
+        {renderCount(total, posts?.length ?? 0)}
       </div>
     </div>
 

@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+:root {
+  --navbar-height: 65px;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
@@ -102,6 +106,15 @@ a.nav-link.active {
   }
 }
 
-.scrollbar-hide {
-  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+#article-content h2[id],
+#article-content h3[id],
+#article-content h4[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
 }

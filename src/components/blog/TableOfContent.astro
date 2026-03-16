@@ -1,0 +1,88 @@
+---
+import type { MarkdownHeading } from "astro";
+import { List } from "@lucide/astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="space-y-4 article-toc">
+  <div
+    class="flex items-center gap-2 font-black uppercase tracking-widest text-sm lg:text-xs mb-6"
+  >
+    <List size={16} class="text-indigo-600 dark:text-indigo-400" />
+    Tabla de contenido
+  </div>
+  <ul class="space-y-3">
+    {
+      headings.map((heading) => (
+        <li
+          style={{ paddingLeft: `${(heading.depth - 2) * 1}rem` }}
+          class="transition-all"
+        >
+          <a
+            href={`#${heading.slug}`}
+            data-astro-history="replace"
+            class={`block text-base lg:text-sm leading-snug transition-colors ${
+              // activeId === heading.slug
+              //   ? "text-indigo-600 dark:text-indigo-400 font-bold"
+              //   :
+              "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 aria-selected:text-indigo-600 aria-selected:dark:text-indigo-400 aria-selected:font-bold"
+            }`}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script is:inline>
+  function addIntersectionObserver() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const headingFragment = `#${entry.target.id}`;
+          const tocItem = document.querySelector(
+            `a[href="${headingFragment}"]`,
+          );
+
+          if (entry.isIntersecting) {
+            const previouslyActivatedItem = document.querySelector(
+              '[aria-selected="true"]',
+            );
+
+            if (previouslyActivatedItem) {
+              previouslyActivatedItem.ariaSelected = "false";
+            }
+
+            if (tocItem) {
+              tocItem.ariaSelected = "true";
+            }
+          } else {
+            const isAnyOtherEntryIntersecting = entries.some(
+              (e) => e.target.id !== entry.target.id && e.isIntersecting,
+            );
+
+            if (isAnyOtherEntryIntersecting) {
+              tocItem.ariaSelected = "false";
+            }
+          }
+        }
+      },
+      { root: null, rootMargin: "0% 0% -50% 0%", threshold: [1] },
+    );
+
+    document
+      .querySelectorAll("#article-content h2, #article-content h3")
+      .forEach((section) => {
+        observer.observe(section);
+      });
+  }
+
+  document.addEventListener("astro:page-load", addIntersectionObserver);
+</script>

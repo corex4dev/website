@@ -2,9 +2,10 @@
 import FormattedDate from "@/components/FormattedDate.astro";
 import CommentsSection from "@/components/blog/CommentsSection.astro";
 import RelatedPosts from "@/components/blog/RelatedPosts.astro";
+import TableOfContent from "@/components/blog/TableOfContent.astro";
 import JsonLd from "@/components/layout/JsonLd.astro";
 import WebsiteLayout from "@/layouts/WebsiteLayout.astro";
-import { getBreadcrumbSchema } from "@/utils/jsonld";
+import { getBlogPostSchema, getBreadcrumbSchema } from "@/utils/jsonld";
 import { ArrowLeft, Calendar, Share2, Sparkles } from "@lucide/astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
@@ -30,7 +31,7 @@ const breadcrumbSchema = getBreadcrumbSchema([
   { name: post.data.title, item: `/blog/${post.id}` },
 ]);
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <WebsiteLayout
@@ -43,7 +44,7 @@ const { Content } = await render(post);
     overwriteKeywords: true,
   }}
 >
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <article class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <button
       class="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 mb-10 transition-colors group"
       onclick="backToBlog()"
@@ -119,10 +120,32 @@ const { Content } = await render(post);
       />
     </div>
 
-    <div
-      class="prose prose-lg max-w-none prose-slate dark:prose-invert prose-headings:font-black prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-img:rounded-3xl leading-relaxed text-slate-700 dark:text-slate-300"
-    >
-      <Content />
+    <div class="flex flex-col lg:flex-row-reverse gap-12 relative">
+      {/* Sidebar Table of Contents */}
+      <aside class="hidden lg:block w-64 shrink-0">
+        <div
+          class="sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto pr-4 scrollbar-hide"
+        >
+          <TableOfContent headings={headings} />
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <div class="flex-1 min-w-0">
+        {/* Mobile Table of Contents */}
+        <div
+          class="lg:hidden mb-12 bg-slate-50 dark:bg-transparent rounded-3xl p-6 border border-slate-200 dark:border-slate-800"
+        >
+          <TableOfContent headings={headings} />
+        </div>
+
+        <div
+          id="article-content"
+          class="prose prose-lg max-w-none prose-slate dark:prose-invert prose-headings:font-black prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-img:rounded-3xl leading-relaxed text-slate-700 dark:text-slate-300"
+        >
+          <Content />
+        </div>
+      </div>
     </div>
 
     {
@@ -176,6 +199,7 @@ const { Content } = await render(post);
   </article>
 
   <JsonLd schema={breadcrumbSchema} />
+  <JsonLd schema={getBlogPostSchema(post)} />
 </WebsiteLayout>
 
 <script is:inline>
