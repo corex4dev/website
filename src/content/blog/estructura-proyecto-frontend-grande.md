@@ -1,6 +1,6 @@
 ---
 title: Cómo estructurar un proyecto frontend grande sin perder el control
-description: Aprende cómo organizar proyectos frontend grandes utilizando una arquitectura clara, modular y escalable para evitar el caos en aplicaciones modernas.
+description: Aprende cómo estructurar un proyecto frontend grande utilizando arquitectura modular, separación de responsabilidades y patrones escalables.
 date: 2026-03-18
 image: /uploads/frontend-project-structure.png
 published: true
@@ -67,11 +67,16 @@ src/
     shared/
   components/
     ui/
+  hooks/
+  services/
+  app/
+    pages/
+    layouts/
 ```
 
 Cada módulo contiene su propia lógica interna. El módulo de autenticación, por ejemplo, puede incluir formularios de login, hooks relacionados con la sesión y utilidades específicas para gestionar usuarios.
 
-Este enfoque reduce el acoplamiento entre diferentes partes del sistema y facilita mucho la navegación dentro del proyecto.
+Esta organización permite que cada módulo tenga sus propias responsabilidades y reduce el acoplamiento entre diferentes partes del sistema.
 
 ## Separar componentes de interfaz y lógica
 
@@ -174,6 +179,20 @@ Los proyectos evolucionan constantemente y es fácil que nuevas funcionalidades 
 Por eso muchas organizaciones establecen convenciones claras sobre dónde debe vivir cada tipo de código y cómo deben comunicarse los módulos entre sí.
 
 Estas reglas no tienen que ser complejas. Lo importante es que todos los desarrolladores del equipo entiendan la estructura del proyecto y respeten los principios que la mantienen organizada.
+
+## Preguntas frecuentes sobre arquitectura frontend
+
+### ¿Cuál es la mejor estructura para un proyecto React grande?
+
+No existe una única estructura perfecta. Sin embargo, la mayoría de aplicaciones grandes funcionan mejor cuando el código se organiza por funcionalidades o módulos en lugar de hacerlo únicamente por tipo de archivo.
+
+### ¿Cuándo debería reorganizar un proyecto frontend?
+
+Si el equipo empieza a tener dificultades para encontrar archivos, aparecen dependencias circulares o los componentes contienen demasiadas responsabilidades, probablemente sea momento de revisar la arquitectura del proyecto.
+
+### ¿Es necesario usar Redux en proyectos grandes?
+
+No siempre. Herramientas modernas como Zustand, TanStack Query o incluso el estado local bien organizado pueden ser suficientes dependiendo del tipo de aplicación.
 
 ## Conclusión
 
