@@ -3,7 +3,7 @@ title: 'Sveltia CMS y Astro: cómo crear un blog moderno sin backend'
 description: Aprende a crear un blog moderno usando Astro y Sveltia CMS. Un CMS git-based ligero, ideal para proyectos rápidos y sitios estáticos.
 date: 2026-03-18
 image: /uploads/sveltia-cms-astro-blog-tutorial.png
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 12
@@ -152,9 +152,7 @@ Un ejemplo básico de la configuración de Sveltia CMS sería algo así:
 {
   "backend": {
     "name": "github",
-    "repo": "tu-usuario/tu-repo",
-    "branch": "main",
-    "auth_type": "pkce"
+    "repo": "tu-usuario/tu-repo"
   },
 
   "media_folder": "public/uploads",
@@ -167,6 +165,8 @@ Un ejemplo básico de la configuración de Sveltia CMS sería algo así:
       "folder": "src/content/blog",
       "create": true,
       "slug": "{{slug}}",
+      "format": "frontmatter",
+      "extension": "md",
       "fields": [
         {
           "label": "Title",
@@ -182,6 +182,11 @@ Un ejemplo básico de la configuración de Sveltia CMS sería algo así:
           "label": "Publish Date",
           "name": "pubDate",
           "widget": "datetime"
+        },
+        {
+          "label": "Hero image",
+          "name": "heroImage",
+          "widget": "image"
         },
         {
           "label": "Body",
