@@ -1,7 +1,7 @@
 ---
 title: 'Sveltia CMS y Astro: cómo crear un blog moderno sin backend'
 description: Aprende a crear un blog moderno usando Astro y Sveltia CMS. Un CMS git-based ligero, ideal para proyectos rápidos y sitios estáticos.
-date: 2026-03-18
+date: 2026-03-20
 image: /uploads/sveltia-cms-astro-blog-tutorial.png
 published: true
 featured: false
