@@ -2,7 +2,7 @@
 title: 'El gran problema de muchos proyectos web: elegir mal el stack'
 description: Elegir mal el stack tecnológico puede comprometer un proyecto desde el inicio. Cómo evitarlo y tomar decisiones técnicas más estratégicas.
 date: 2026-03-08
-image: /uploads/errors-picking-your-stack.png
+image: /uploads/errors-picking-your-stack.webp
 published: true
 featured: true
 youtubeId: ''

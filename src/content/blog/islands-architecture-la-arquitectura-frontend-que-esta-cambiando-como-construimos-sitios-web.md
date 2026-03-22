@@ -2,7 +2,7 @@
 title: 'Islands Architecture: la arquitectura frontend que está cambiando cómo construimos sitios web'
 description: Qué es Islands Architecture, por qué mejora el rendimiento web y cómo frameworks como Astro o Fresh están popularizando este nuevo enfoque frontend.
 date: 2026-03-07
-image: /uploads/island-architecture.png
+image: /uploads/island-architecture.webp
 published: true
 featured: false
 youtubeId: ''

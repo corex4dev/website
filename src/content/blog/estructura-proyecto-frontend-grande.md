@@ -2,7 +2,7 @@
 title: Cómo estructurar un proyecto frontend grande sin perder el control
 description: Aprende cómo estructurar un proyecto frontend grande utilizando arquitectura modular, separación de responsabilidades y patrones escalables.
 date: 2026-03-18
-image: /uploads/frontend-project-structure.png
+image: /uploads/frontend-project-structure.webp
 published: true
 featured: false
 youtubeId: ''
@@ -122,7 +122,7 @@ export function SubscriptionList() {
 
 Este patrón mejora la legibilidad del código y facilita reutilizar la lógica en otras partes del sistema.
 
-![Imagen explicativa de arquitectura modular](/uploads/component-blocks-aproach.png)
+![Imagen explicativa de arquitectura modular](/uploads/component-blocks-aproach.webp)
 
 ## Definir capas dentro del frontend
 
@@ -168,7 +168,7 @@ Esto no solo reduce duplicación de código, sino que también mejora la consist
 
 Muchas empresas terminan desarrollando lo que se conoce como un **design system**, una colección de componentes y estilos que pueden reutilizarse en todo el producto.
 
-![Imagen conceptual de design system](/uploads/ui-design-system.png)
+![Imagen conceptual de design system](/uploads/ui-design-system.webp)
 
 ## Mantener la arquitectura con el paso del tiempo
 

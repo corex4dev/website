@@ -1,8 +1,8 @@
 ---
-title: Arquitectura de pagos moderna para SaaS
+title: Arquitectura de pagos moderna para SaaS y marketplace
 description: Aprende cómo diseñar una arquitectura de pagos moderna para SaaS y marketplaces, incluyendo webhooks, eventos, billing y gestión de suscripciones.
-date: 2026-03-22
-image: /uploads/arquitectura-pagos-saas.png
+date: 2026-03-25
+image: /uploads/arquitectura-pagos-saas.webp
 published: false
 featured: false
 youtubeId: ''
@@ -72,7 +72,7 @@ export async function POST(req) {
 
 Este tipo de lógica es fundamental para mantener el estado de tu aplicación sincronizado con el sistema de facturación.
 
-![Flujo de webhooks](/uploads/flujo-webhooks-pagos.png)
+![Flujo de webhooks](/uploads/flujo-webhooks-pagos.webp)
 
 ## Modelando el sistema con eventos
 
@@ -147,7 +147,7 @@ Control de acceso
 
 En este modelo, el proveedor de pagos es responsable de procesar transacciones, pero tu backend es el encargado de traducir esos eventos en lógica de negocio.
 
-![Imagen arquitectura completa](/uploads/full-arquitectura-pagos.png)
+![Imagen arquitectura completa](/uploads/full-arquitectura-pagos.webp)
 
 ## Marketplaces: una capa extra de complejidad
 

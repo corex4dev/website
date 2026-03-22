@@ -2,7 +2,7 @@
 title: 'Better Auth 1.5: el salto más grande del proyecto hasta ahora'
 description: 'Better Auth 1.5 es la actualización más ambiciosa del proyecto: nuevas plataformas, CLI renovada, OAuth 2.1, SSO listo para producción y mucho más.'
 date: 2026-03-03
-image: /uploads/better-auth-1.5-corex4dev.png
+image: /uploads/better-auth-1.5-corex4dev.webp
 published: true
 featured: false
 youtubeId: ''

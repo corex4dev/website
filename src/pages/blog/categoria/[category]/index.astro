@@ -25,7 +25,9 @@ const posts = (
   await getCollection("blog", (v) =>
     v.data.categories.includes(categoryEntry.data.title),
   )
-).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+)
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const paginated = paginateArray<"blog">(posts, 1, PAGINATE_LIMITS.BLOG);
 ---

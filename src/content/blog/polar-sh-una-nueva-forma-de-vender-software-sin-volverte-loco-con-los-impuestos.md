@@ -2,7 +2,7 @@
 title: 'Polar.sh: una nueva forma de vender software sin volverte loco con los impuestos'
 description: Polar.sh combina pagos, suscripciones y Merchant of Record para vender software globalmente sin preocuparte por impuestos ni compliance.
 date: 2026-03-06
-image: /uploads/polar-sh-MoR.png
+image: /uploads/polar-sh-MoR.webp
 published: true
 featured: false
 youtubeId: ''

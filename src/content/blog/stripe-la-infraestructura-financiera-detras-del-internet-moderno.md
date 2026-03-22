@@ -2,7 +2,7 @@
 title: 'Stripe: la infraestructura financiera detrás del internet moderno'
 description: Una mirada a cómo Stripe cambió los pagos online y por qué se convirtió en la infraestructura financiera favorita de startups modernas.
 date: 2026-02-26
-image: /uploads/rupixen-Q59HmzK38eQ-unsplash.jpg
+image: /uploads/rupixen-Q59HmzK38eQ-unsplash.webp
 published: true
 featured: false
 youtubeId: ''
