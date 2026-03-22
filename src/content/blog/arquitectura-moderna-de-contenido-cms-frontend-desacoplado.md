@@ -2,7 +2,7 @@
 title: "Arquitectura moderna de contenido: CMS + frontend desacoplado"
 description: Descubre cómo funciona la arquitectura moderna de contenido basada en CMS headless, APIs y frontends desacoplados para construir aplicaciones web escalables.
 date: 2026-03-12
-image: /uploads/arquitectura-desacoplada.png
+image: /uploads/arquitectura-desacoplada.webp
 published: true
 featured: false
 youtubeId: ""

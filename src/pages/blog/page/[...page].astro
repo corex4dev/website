@@ -5,18 +5,18 @@ import { paginateArray } from "@/utils/paginate";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const all = await getCollection("blog");
-    const totalPages = Math.ceil(all.length / PAGINATE_LIMITS.BLOG);
-    return Array.from({ length: totalPages }).map((_, i) => ({
-        params: { page: String(i + 1) },
-    }));
+  const all = (await getCollection("blog")).filter((p) => p.data.published);
+  const totalPages = Math.ceil(all.length / PAGINATE_LIMITS.BLOG);
+  return Array.from({ length: totalPages }).map((_, i) => ({
+    params: { page: String(i + 1) },
+  }));
 }
 
 const page = Number(Astro.params.page || 1);
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const posts = (await getCollection("blog"))
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const paginated = paginateArray<"blog">(posts, page, PAGINATE_LIMITS.BLOG);
 ---

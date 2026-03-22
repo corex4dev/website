@@ -2,7 +2,7 @@
 title: El estado actual de la autenticación en aplicaciones web
 description: 'Un vistazo a las tendencias modernas de autenticación: sesiones, OAuth, passkeys y herramientas que simplifican la gestión de usuarios.'
 date: 2026-03-10
-image: /uploads/current-state-auth.png
+image: /uploads/current-state-auth.webp
 published: true
 featured: false
 youtubeId: ''

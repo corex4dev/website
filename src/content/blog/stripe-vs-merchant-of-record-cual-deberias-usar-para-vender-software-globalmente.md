@@ -2,7 +2,7 @@
 title: 'Stripe vs Merchant of Record: cuál deberías usar para vender software globalmente'
 description: 'Stripe o Merchant of Record: descubre cuál es la mejor opción para vender software globalmente sin complicaciones fiscales ni técnicas.'
 date: 2026-03-09
-image: /uploads/stripe-vs-merchant-of-record.png
+image: /uploads/stripe-vs-merchant-of-record.webp
 published: true
 featured: false
 youtubeId: ''

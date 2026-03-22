@@ -9,7 +9,7 @@ import {
 export const prerender = true;
 
 export const GET = async (ctx: APIContext) => {
-  const posts = await getCollection("blog");
+  const posts = (await getCollection("blog")).filter((p) => p.data.published);
   const products = await getCollection("product");
   const videos = await getCollection("video");
 
@@ -75,7 +75,7 @@ export const GET = async (ctx: APIContext) => {
     ...videos.map(transformEntityToIndex),
   ];
 
-  return new Response(JSON.stringify(searchIndex, null, 2), {
+  return new Response(JSON.stringify(searchIndex), {
     status: 200,
     headers: {
       "Content-Type": "application/json",

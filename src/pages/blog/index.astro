@@ -4,9 +4,9 @@ import PaginatedBlogLayout from "@/layouts/PaginatedBlogLayout.astro";
 import { paginateArray } from "@/utils/paginate";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const posts = (await getCollection("blog"))
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const paginated = paginateArray<"blog">(posts, 1, PAGINATE_LIMITS.BLOG);
 ---

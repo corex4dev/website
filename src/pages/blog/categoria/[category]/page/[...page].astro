@@ -11,9 +11,9 @@ export const getStaticPaths = async () => {
 
   const paths = [];
   for (const cat of categories) {
-    const items = all.filter((p) =>
-      (p.data.categories || []).includes(cat.data.title),
-    );
+    const items = all
+      .filter((p) => (p.data.categories || []).includes(cat.data.title))
+      .filter((p) => p.data.published);
     const pages = Math.max(1, Math.ceil(items.length / PAGINATE_LIMITS.BLOG));
     for (let i = 1; i <= pages; i++) {
       paths.push({ params: { category: cat.id, page: String(i) } });
@@ -34,7 +34,9 @@ const posts = (
   await getCollection("blog", (v) =>
     v.data.categories.includes(categoryEntry.data.title),
   )
-).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+)
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const paginated = paginateArray<"blog">(posts, page, PAGINATE_LIMITS.BLOG);
 ---

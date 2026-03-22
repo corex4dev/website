@@ -2,7 +2,7 @@
 title: Cómo diseñar un sistema de suscripciones para tu aplicación web
 description: Aprende cómo diseñar un sistema de suscripciones para SaaS desde cero y qué herramientas usar para cobrar pagos recurrentes en tu aplicación web.
 date: 2026-03-16
-image: /uploads/sistema-suscripciones-web.png
+image: /uploads/sistema-suscripciones-web.webp
 published: true
 featured: false
 youtubeId: ''
@@ -59,7 +59,7 @@ La tercera parte es el flujo de eventos que conecta ambas capas. Cuando ocurre u
 
 En términos simplificados, el flujo suele verse así:
 
-![Arquitectura de suscripciones Saa](/uploads/subscription-flow-diagram.png)
+![Arquitectura de suscripciones Saa](/uploads/subscription-flow-diagram.webp)
 
 En este modelo, el frontend inicia el proceso de pago, el proveedor de pagos gestiona la transacción y envía eventos a tu backend mediante webhooks para mantener sincronizado el estado de las suscripciones.
 
