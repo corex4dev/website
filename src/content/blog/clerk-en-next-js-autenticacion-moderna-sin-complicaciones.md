@@ -108,7 +108,7 @@ export default async function Page() {
 
 Este tipo de integración permite que la autenticación forme parte natural de la arquitectura del proyecto.
 
-## Ver la integración completa en acción
+### Ver la integración completa en acción
 
 Aunque la integración básica es bastante simple, donde realmente se entiende el valor de Clerk es viéndolo dentro de un proyecto real.
 
