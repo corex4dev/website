@@ -1,7 +1,7 @@
 ---
-title: Arquitectura de pagos moderna para SaaS
+title: Arquitectura de pagos moderna para SaaS y marketplace
 description: Aprende cómo diseñar una arquitectura de pagos moderna para SaaS y marketplaces, incluyendo webhooks, eventos, billing y gestión de suscripciones.
-date: 2026-03-22
+date: 2026-03-25
 image: /uploads/arquitectura-pagos-saas.png
 published: false
 featured: false
