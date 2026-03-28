@@ -3,7 +3,7 @@ title: 'Zustand vs Context vs TanStack Query: cómo manejar el estado en fronten
 description: Aprende cuándo usar Zustand, Context o TanStack Query en proyectos reales y cómo combinarlos correctamente en aplicaciones modernas.
 date: 2026-03-28
 image: /uploads/global-state-comparative.webp
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 14
