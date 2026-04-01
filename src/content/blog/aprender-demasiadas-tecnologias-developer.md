@@ -3,7 +3,7 @@ title: La trampa de aprender demasiadas tecnologías
 description: Aprender muchas tecnologías no te hace avanzar. Descubre por qué los developers se estancan y cómo enfocarte para crecer de verdad.
 date: 2026-03-31
 image: /uploads/aprender-demasiadas-tecnologias-developer.webp
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 7
