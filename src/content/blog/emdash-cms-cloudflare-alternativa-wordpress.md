@@ -3,7 +3,7 @@ title: 'Emdash CMS: el nuevo CMS de Cloudflare que quiere reemplazar a WordPress
 description: Analizamos Emdash CMS, el nuevo CMS de Cloudflare orientado a desarrolladores JavaScript. ¿Es realmente el sucesor de WordPress?
 date: 2026-04-03
 image: /uploads/emdash-cms-cloudflare-alternativa-wordpress.webp
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 12
@@ -18,6 +18,7 @@ keywords:
 related:
   - por-que-abandone-wordpress
   - arquitectura-moderna-de-contenido-cms-frontend-desacoplado
+  - el-gran-problema-de-muchos-proyectos-web-elegir-mal-el-stack
 ---
 
 El ecosistema de los CMS lleva años evolucionando, pero hay una realidad que sigue siendo difícil de ignorar: WordPress continúa dominando una gran parte de la web, incluso cuando muchos desarrolladores ya no se sienten cómodos trabajando con él.
