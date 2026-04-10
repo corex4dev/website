@@ -3,7 +3,7 @@ title: Cómo consumir APIs en frontend moderno sin romper tu aplicación
 description: Aprende a consumir APIs correctamente en frontend moderno con buenas prácticas, manejo de errores y arquitectura escalable.
 date: 2026-04-10
 image: /uploads/consumir-apis-frontend-moderno.webp
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 14
