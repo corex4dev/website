@@ -3,7 +3,7 @@ title: Por qué terminar proyectos es más importante que aprender más código
 description: Aprender más código no te hará mejor developer si no terminas proyectos. Descubre por qué y cómo cambiar tu enfoque.
 date: 2026-04-12
 image: /uploads/terminar-proyectos-vs-aprender-codigo.webp
-published: false
+published: true
 featured: false
 youtubeId: ''
 reading_time: 10
